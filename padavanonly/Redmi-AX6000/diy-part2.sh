@@ -10,6 +10,9 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
+# Modify default IP
+sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
+
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-ssr-plus
@@ -31,9 +34,6 @@ rm -rf feeds/packages/net/v2ray-plugin
 rm -rf feeds/packages/net/xray-core 
 rm -rf feeds/packages/net/xray-plugin
 rm -rf feeds/packages/net/mosdns
-
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
 
 #添加额外软件包
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
