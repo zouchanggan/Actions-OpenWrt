@@ -10,44 +10,32 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# Replace with passwall
-rm -rf openwrt/feeds/luci/applications/luci-app-passwall
-# Replace with ssr-plus
-rm -rf openwrt/feeds/luci/applications/luci-app-ssr-plus 
-rm -rf openwrt/feeds/packages/net/brook 
-rm -rf openwrt/feeds/packages/net/chinadns-ng 
-rm -rf openwrt/feeds/packages/net/dns2socks
-rm -rf openwrt/feeds/packages/net/dns2tcp 
-rm -rf openwrt/feeds/packages/net/hysteria 
-rm -rf openwrt/feeds/packages/net/ipt2socks 
-rm -rf openwrt/feeds/packages/net/microsocks 
-rm -rf openwrt/feeds/packages/net/naiveproxy 
-rm -rf openwrt/feeds/packages/net/pdnsd-alt
-rm -rf openwrt/feeds/packages/net/redsocks2 
-rm -rf openwrt/feeds/packages/net/shadowsocksr-libev
-rm -rf openwrt/feeds/packages/net/shadowsocks-rust 
-rm -rf openwrt/feeds/packages/net/simple-obfs 
-rm -rf openwrt/feeds/packages/net/sing-box 
-rm -rf openwrt/feeds/packages/net/ssocks 
-rm -rf openwrt/feeds/packages/net/tcping 
-rm -rf openwrt/feeds/packages/net/trojan f
-rm -rf openwrt/feeds/packages/net/trojan-go
-rm -rf openwrt/feeds/packages/net/trojan-plus 
-rm -rf openwrt/feeds/packages/net/v2raya
-rm -rf openwrt/feeds/packages/net/v2ray-core 
-rm -rf openwrt/feeds/packages/net/v2ray-geodata 
-rm -rf openwrt/feeds/packages/net/v2ray-plugin
-rm -rf openwrt/feeds/packages/net/xray-core 
-rm -rf openwrt/feeds/packages/net/xray-plugin
-rm -rf openwrt/feeds/packages/net/mosdns
-# Modify default IP
-sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
-##-----------------Add OpenClash dev core------------------
-#curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/master/core-lateset/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
-#tar zxvf /tmp/clash.tar.gz -C /tmp >/dev/null 2>&1
-#chmod +x /tmp/clash >/dev/null 2>&1
-#mkdir -p feeds/luci/applications/luci-app-openclash/root/etc/openclash/core
-#mv /tmp/clash feeds/luci/applications/luci-app-openclash/root/etc/openclash/core/clash >/dev/null 2>&1
-#rm -rf /tmp/clash.tar.gz >/dev/null 2>&1
-##---------------------------------------------------------
+# 删除软件包
+rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/luci/applications/luci-app-ssr-plus
+rm -rf feeds/luci/applications/luci-app-vssr 
+# 删除软件依赖
+rm -rf feeds/packages/net/brook 
+rm -rf feeds/packages/net/chinadns-ng 
+rm -rf feeds/packages/net/hysteria 
+rm -rf feeds/packages/net/shadowsocksr-libev
+rm -rf feeds/packages/net/shadowsocks-rust 
+rm -rf feeds/packages/net/tcping 
+rm -rf eeds/packages/net/trojan 
+rm -rf feeds/packages/net/trojan-go
+rm -rf feeds/packages/net/trojan-plus 
+rm -rf feeds/packages/net/v2raya
+rm -rf feeds/packages/net/v2ray-core 
+rm -rf feeds/packages/net/v2ray-geodata 
+rm -rf feeds/packages/net/v2ray-plugin
+rm -rf feeds/packages/net/xray-core 
+rm -rf feeds/packages/net/xray-plugin
+rm -rf feeds/packages/net/mosdns
 
+# Modify default IP
+#sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
+
+#添加额外软件包
+git clone --depth=1 https://github.com/kenzok8/small.git package/small
+git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
+git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
