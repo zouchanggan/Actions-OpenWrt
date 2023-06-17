@@ -33,9 +33,12 @@ rm -rf feeds/packages/net/xray-plugin
 rm -rf feeds/packages/net/mosdns
 
 # Modify default IP
-#sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
 
 #添加额外软件包
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+./scripts/feeds update -a
+./scripts/feeds install -a
