@@ -82,7 +82,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
 
     - name: 下载安装包
       id: package
