@@ -12,6 +12,7 @@
 
 # Modify default IP
 sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.1.10/g' openwrt/package/base-files/files/bin/config_generate
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
