@@ -39,6 +39,3 @@ rm -rf feeds/packages/net/mosdns
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
-./scripts/feeds update -a
-./scripts/feeds install -a
