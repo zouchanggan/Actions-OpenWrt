@@ -25,11 +25,10 @@ rm -rf feeds/packages/net/shadowsocksr-libev
 rm -rf feeds/packages/net/shadowsocks-rust 
 rm -rf feeds/packages/net/tcping 
 rm -rf eeds/packages/net/trojan 
-rm -rf feeds/packages/net/trojan-go
-rm -rf feeds/packages/net/trojan-plus 
+# rm -rf feeds/packages/net/trojan-go
+# rm -rf feeds/packages/net/trojan-plus 
 rm -rf feeds/packages/net/v2raya
-rm -rf feeds/packages/net/v2ray-core 
-rm -rf feeds/packages/net/v2ray-geodata 
+rm -rf feeds/packages/net/v2ray-core  
 rm -rf feeds/packages/net/v2ray-plugin
 rm -rf feeds/packages/net/xray-core 
 rm -rf feeds/packages/net/xray-plugin
@@ -39,6 +38,7 @@ rm -rf feeds/packages/lang/golang
 
 #添加额外软件包
 git clone https://github.com/sbwml/packages_lang_golang -b 20.x feeds/packages/lang/golang
-git clone --depth=1 https://github.com/kenzok8/small.git package/small
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/helloworld
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
