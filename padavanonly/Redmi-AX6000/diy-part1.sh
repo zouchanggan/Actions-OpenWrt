@@ -35,6 +35,7 @@ rm -rf feeds/packages/net/xray-core
 rm -rf feeds/packages/net/xray-plugin
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/lang/golang
 
 # Add a feed source
 #echo 'src-git helloworld https://githubfast.com/fw876/helloworld' >>feeds.conf.default
