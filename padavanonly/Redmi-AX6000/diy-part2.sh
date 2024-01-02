@@ -12,6 +12,8 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
+# rm -rf feeds/packages/net/trojan-go
+# rm -rf feeds/packages/net/trojan-plus 
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -25,8 +27,6 @@ rm -rf feeds/packages/net/shadowsocksr-libev
 rm -rf feeds/packages/net/shadowsocks-rust 
 rm -rf feeds/packages/net/tcping 
 rm -rf eeds/packages/net/trojan 
-# rm -rf feeds/packages/net/trojan-go
-# rm -rf feeds/packages/net/trojan-plus 
 rm -rf feeds/packages/net/v2raya
 rm -rf feeds/packages/net/v2ray-core  
 rm -rf feeds/packages/net/v2ray-plugin
