@@ -34,6 +34,7 @@ rm -rf feeds/packages/net/v2ray-plugin
 rm -rf feeds/packages/net/xray-core 
 rm -rf feeds/packages/net/xray-plugin
 rm -rf feeds/packages/net/mosdns
+rm -rf feeds/packages/net/v2ray-geodata
 
 #添加额外软件包
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
