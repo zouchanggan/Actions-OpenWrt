@@ -5,7 +5,7 @@
 # This is free software, licensed under the MIT License.
 # See /LICENSE for more information.
 #
-# https://github.com/P3TERX/Actions-OpenWrt
+# https://githubfast.com/P3TERX/Actions-OpenWrt
 # File name: diy-part1.sh
 # Description: OpenWrt DIY script part 1 (Before Update feeds)
 #
@@ -14,10 +14,10 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source
-#echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
-#echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-#echo 'src-git messense https://github.com/messense/aliyundrive-webdav' >>feeds.conf.default
-#echo "src-git kenzo https://github.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
-#echo "src-git small https://github.com/kenzok8/small" >> ./feeds.conf.default
+#echo 'src-git helloworld https://githubfast.com/fw876/helloworld' >>feeds.conf.default
+#echo 'src-git passwall https://githubfast.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
+#echo 'src-git messense https://githubfast.com/messense/aliyundrive-webdav' >>feeds.conf.default
+#echo "src-git kenzo https://githubfast.com/kenzok8/openwrt-packages" >> ./feeds.conf.default
+#echo "src-git small https://githubfast.com/kenzok8/small" >> ./feeds.conf.default
 ## 修改DTS的spi_nand的spi-max-frequency为52MHz
-sed -i 's/spi-max-frequency = <20000000>/spi-max-frequency = <52000000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000-uboot.dts
+#sed -i 's/spi-max-frequency = <20000000>/spi-max-frequency = <52000000>/' target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-xiaomi-redmi-router-ax6000-uboot.dts
