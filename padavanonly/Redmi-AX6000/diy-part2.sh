@@ -38,7 +38,6 @@ rm -rf feeds/packages/lang/golang
 
 #添加额外软件包
 git clone https://github.com/openwrt/packages/tree/openwrt-23.05/lang/golang feeds/packages/lang/golang
-git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/helloworld
+git clone https://github.com/kenzok8/small.git package/small
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
