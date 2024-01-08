@@ -12,16 +12,16 @@
 
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
-# rm -rf eeds/packages/net/trojan
-# rm -rf feeds/packages/net/trojan-go
-# rm -rf feeds/packages/net/trojan-plus 
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-ssr-plus
-rm -rf feeds/luci/applications/luci-app-vssr 
+# rm -rf feeds/luci/applications/luci-app-vssr 
+
 # 删除软件依赖
-rm -rf feeds/packages/net/brook 
+rm -rf feeds/packages/net/trojan
+rm -rf feeds/packages/net/trojan-go
+rm -rf feeds/packages/net/trojan-plus 
 rm -rf feeds/packages/net/chinadns-ng 
 rm -rf feeds/packages/net/hysteria 
 rm -rf feeds/packages/net/shadowsocksr-libev
@@ -42,3 +42,9 @@ git clone https://github.com/kenzok8/small.git package/small
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
+
+# 替换软件依赖
+cp -f package/helloworld/mosdns feeds/packages/net/mosdns
+cp -f package/small/trojan feeds/packages/net/trojan
+cp -f package/small/trojan-go feeds/packages/net/trojan-go
+cp -f package/small/trojan-plus feeds/packages/net/trojan-plus
