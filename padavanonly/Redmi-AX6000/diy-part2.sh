@@ -44,7 +44,7 @@ git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 替换软件依赖
-cp -f package/helloworld/mosdns/ feeds/packages/net/
-cp -f package/small/trojan/ feeds/packages/net/
-cp -f package/small/trojan-go/ feeds/packages/net/
-cp -f package/small/trojan-plus/ feeds/packages/net/
+cp -r package/helloworld/mosdns/ feeds/packages/net/
+cp -r package/small/trojan/ feeds/packages/net/
+cp -r package/small/trojan-go/ feeds/packages/net/
+cp -r package/small/trojan-plus/ feeds/packages/net/
