@@ -39,12 +39,12 @@ rm -rf feeds/packages/lang/golang
 #添加额外软件包
 git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
 git clone https://github.com/kenzok8/small.git package/small
-git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+git clone https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 
 # 替换软件依赖
-cp -r package/helloworld/mosdns/ feeds/packages/net/
-cp -r package/small/trojan/ feeds/packages/net/
-cp -r package/small/trojan-go/ feeds/packages/net/
-cp -r package/small/trojan-plus/ feeds/packages/net/
+cp -rf /package/helloworld/mosdns /feeds/packages/net
+cp -rf /package/small/trojan /feeds/packages/net
+cp -rf /package/small/trojan-go /feeds/packages/net
+cp -rf /package/small/trojan-plus /feeds/packages/net
