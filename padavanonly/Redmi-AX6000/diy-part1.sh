@@ -13,13 +13,6 @@
 # Uncomment a feed source
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
-#添加额外软件包
-#git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
-#git clone https://github.com/kenzok8/small.git package/small
-#git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
-#git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
-#git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
-
 # Add a feed source
 #echo 'src-git helloworld https://githubfast.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://githubfast.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
