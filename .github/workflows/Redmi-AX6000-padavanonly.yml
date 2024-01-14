@@ -11,6 +11,13 @@
 name: Redmi-AX6000-padavanonly
 
 on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
 #  schedule:
 #    - cron: 0 16 * * *
 
