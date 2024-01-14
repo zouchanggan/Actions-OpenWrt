@@ -10,6 +10,7 @@
 ###############改名字##############
 name: Redmi-AX6000-padavanonly
 
+on:
 #  schedule:
 #    - cron: 0 16 * * *
 
