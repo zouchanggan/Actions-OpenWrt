@@ -43,6 +43,10 @@ git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 
 # 替换软件依赖
+rm -rf package/small/v2raya
+rm -rf package/small/shadow-tls
+cp -r package/helloworld/v2raya package/small/v2raya
+cp -r package/helloworld/shadow-tls package/small/shadow-tls
 cp -r package/helloworld/mosdns feeds/packages/net
 cp -r package/small/trojan feeds/packages/net
 cp -r package/small/trojan-go feeds/packages/net
@@ -52,5 +56,5 @@ cp -r package/small/tuic-client feeds/packages/net
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-ssr-plus
-rm -rf package/helloworld/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
+rm -rf package/helloworld
