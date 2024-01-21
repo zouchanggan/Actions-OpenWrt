@@ -40,10 +40,6 @@ jobs:
     - name: 下载固件源码
       run: |
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-        cd openwrt
-        echo "date1=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_ENV
-        echo "date2=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
-        echo "date3=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV 
          
     - name: 加载feeds.conf.default & DIY_P1_SH
       run: |
