@@ -15,7 +15,6 @@ env:
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
   OPENWRT_NAME: immortalwrt
-  OPENWRT_NAME1: ARM
 
 jobs:
   build:
@@ -40,7 +39,13 @@ jobs:
         
     - name: 下载固件源码
       run: |
-        git clone $REPO_URL -b $REPO_BRANCH openwrt  
+        git clone $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        echo "date1=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_ENV
+        echo "date2=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+        echo "date3=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV 
          
     - name: 加载feeds.conf.default & DIY_P1_SH
       run: |
@@ -60,11 +65,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        echo "date1=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_ENV
-        echo "date2=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
-        echo "date3=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV      
 
     - name: 下载安装包
       id: package
@@ -96,7 +96,7 @@ jobs:
         -or -name "*xiaomi_redmi-router-ax6000-stock-squashfs-sysupgrade.bin" \
         -or -name "*xiaomi_redmi-router-ax6000-squashfs-factory.bin" \
         | xargs -i mv -f {} ./firmware/
-        cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_ax6000.config
+        # cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_ax6000.config
         cd firmware
         sudo -E apt-get -qq install rename
         rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.bin
