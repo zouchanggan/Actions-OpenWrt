@@ -97,9 +97,9 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
         mkdir firmware && find openwrt/bin/targets/*/*/ -maxdepth 1 \
-        -name "*redmi-router-ax6000-squashfs-sysupgrade.bin" \
-        -or -name "*redmi-router-ax6000-stock-squashfs-sysupgrade.bin" \
-        -or -name "*redmi-router-ax6000-squashfs-factory.bin" \
+        -name "*xiaomi_redmi-router-ax6000-squashfs-sysupgrade.bin" \
+        -or -name "*xiaomi_redmi-router-ax6000-stock-squashfs-sysupgrade.bin" \
+        -or -name "*xiaomi_redmi-router-ax6000-squashfs-factory.bin" \
         | xargs -i mv -f {} ./firmware/
         cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_ax6000.config
         cd firmware
