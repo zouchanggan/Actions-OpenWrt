@@ -41,6 +41,12 @@ jobs:
     - name: 下载固件源码
       run: |
         git clone $REPO_URL -b $REPO_BRANCH openwrt
+        cd openwrt
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        echo "date1=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_ENV
+        echo "date2=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
+        echo "date3=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV 
          
     - name: 加载feeds.conf.default & DIY_P1_SH
       run: |
@@ -76,19 +82,7 @@ jobs:
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "status=success" >> $GITHUB_OUTPUT
-
-    - name: 设置当前的日期
-      id: date
-      run: |
-        cd openwrt
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
-        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*TARGET_.*_(.*)_DEVICE_.*=y/\1/' > TARGET_NAME
-        [ -s TARGET_NAME ] && echo "TARGET_NAME=$(cat TARGET_NAME)" >> $GITHUB_ENV
-        echo "date1=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_ENV
-        echo "date2=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
-        echo "date3=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV   
+        echo "status=success" >> $GITHUB_OUTPUT         
         
     - name: 查看磁盘使用情况
       if: (!cancelled())
@@ -98,15 +92,12 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
-        mkdir firmware && find openwrt/bin/targets/*/*/ -maxdepth 1 \
-        -name "*xiaomi_redmi-router-ax6000-squashfs-sysupgrade.bin" \
-        -or -name "*xiaomi_redmi-router-ax6000-stock-squashfs-sysupgrade.bin" \
-        -or -name "*xiaomi_redmi-router-ax6000-squashfs-factory.bin" \
+        mkdir firmware && find openwrt/bin/targets/*/*
         | xargs -i mv -f {} ./firmware/
         cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_ax6000.config
         cd firmware
         sudo -E apt-get -qq install rename
-        rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.bin
+        rename 's/^/${{ env.date1 }}_/' *.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
       
@@ -114,7 +105,7 @@ jobs:
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.date1 }}_${{ env.OPENWRT_NAME }}_Redmi_Router_AX6000_FIRMWARE
+        name: ${{ env.date1 }}_${{ env.OPENWRT_NAME }}_Redmi_Router_AX6000
         path: ${{ env.FIRMWARE }}
 
     - name: 生成release标签
