@@ -97,14 +97,14 @@ jobs:
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
         mkdir firmware && find openwrt/bin/targets/*/*/ -maxdepth 1 \
-        -name "*squashfs-combined.vmdk" \
-        -or -name "*squashfs-combined.img.gz" \
+        -name "*redmi-router-ax6000-squashfs-sysupgrade.bin" \
+        -or -name "*redmi-router-ax6000-stock-squashfs-sysupgrade.bin" \
+        -or -name "*redmi-router-ax6000-squashfs-factory.bin" \
         | xargs -i mv -f {} ./firmware/
-        cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_x86-64.config
+        cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_ax6000.config
         cd firmware
         sudo -E apt-get -qq install rename
-        rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.vmdk
-        rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.img.gz
+        rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
       
