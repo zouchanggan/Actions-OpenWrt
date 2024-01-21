@@ -113,7 +113,7 @@ jobs:
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: | 
-        cd openwrt/bin/targets/*/*
+        cd openwrt/bin/targets/mediatek/mt7986
         rm -rf packages
         sudo -E apt-get -qq install rename
         rename 's/.*${{ env.TARGET_NAME }}/${{ env.FILE_DATE }}-${{ env.OPENWRT_NAME }}/' *
