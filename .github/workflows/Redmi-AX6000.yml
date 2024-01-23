@@ -94,6 +94,9 @@ jobs:
       run: | 
         cd openwrt/bin/targets/*/*
         rm -rf packages
+        | xargs -i mv -f {} ./firmware/
+        cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_ax6000.config
+        cd firmware
         sudo -E apt-get -qq install rename
         rename 's/^/${{ env.date1 }}_/' *.bin
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
