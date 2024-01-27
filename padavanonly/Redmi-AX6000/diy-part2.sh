@@ -42,7 +42,7 @@ git clone https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
-git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
+git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 
 # 替换软件依赖
 rm -rf package/small/v2raya
