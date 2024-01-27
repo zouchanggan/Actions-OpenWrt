@@ -31,6 +31,7 @@ rm -rf feeds/packages/net/v2ray-plugin
 rm -rf feeds/packages/net/xray-core 
 rm -rf feeds/packages/net/xray-plugin
 rm -rf feeds/packages/net/v2ray-geodata
+rm -rf feeds/packages/net/open-app-filter
 rm -rf feeds/packages/lang/golang
 rm -rf package/libs/mbedtls
 
@@ -41,6 +42,7 @@ git clone https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
+git clone https://github.com/destan19/OpenAppFilter.git package/OpenAppFilter
 
 # 替换软件依赖
 rm -rf package/small/v2raya
@@ -57,4 +59,5 @@ cp -r package/small/tuic-client feeds/packages/net
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
+rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf package/helloworld
