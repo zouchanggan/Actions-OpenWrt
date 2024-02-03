@@ -38,7 +38,7 @@ rm -rf package/libs/mbedtls
 #添加额外软件包
 git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
 git clone https://github.com/kenzok8/small.git package/small
-git clone https://github.com/fw876/helloworld.git package/helloworld
+git clone https://github.com/zouchanggan/helloworld.git package/helloworld
 git clone https://github.com/sbwml/luci-app-mosdns -b v5 package/mosdns
 git clone https://github.com/sbwml/v2ray-geodata package/v2ray-geodata
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
@@ -47,6 +47,8 @@ git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 # 替换软件依赖
 rm -rf package/small/v2raya
 rm -rf package/small/shadow-tls
+rm -rf package/small/shadowsocks-rust
+cp -r package/helloworld/shadowsocks-rust package/small/shadowsocks-rust
 cp -r package/helloworld/v2raya package/small/v2raya
 cp -r package/helloworld/shadow-tls package/small/shadow-tls
 cp -r package/helloworld/mosdns feeds/packages/net
