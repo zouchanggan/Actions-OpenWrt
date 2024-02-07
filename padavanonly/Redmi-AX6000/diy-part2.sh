@@ -48,9 +48,9 @@ git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 rm -rf package/small/v2raya
 rm -rf package/small/shadow-tls
 rm -rf package/small/shadowsocks-rust
-cp -r package/helloworld/shadowsocks-rust package/small/shadowsocks-rust
-cp -r package/helloworld/v2raya package/small/v2raya
-cp -r package/helloworld/shadow-tls package/small/shadow-tls
+cp -r package/helloworld/shadowsocks-rust package/small
+cp -r package/helloworld/v2raya package/small
+cp -r package/helloworld/shadow-tls package/small
 cp -r package/helloworld/mosdns feeds/packages/net
 cp -r package/small/trojan feeds/packages/net
 cp -r package/small/trojan-go feeds/packages/net
