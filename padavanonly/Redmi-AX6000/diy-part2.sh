@@ -51,7 +51,7 @@ rm -rf package/helloworld/shadowsocks-rust
 rm -rf package/helloworld/shadowsocksr-libev
 rm -rf package/helloworld/v2raya
 
-# 替换软件依赖
+# 替换软件&依赖
 cp -r package/small/luci-app-ssr-plus package/helloworld
 cp -r package/SSRP/shadowsocks-rust package/helloworld
 cp -r package/SSRP/shadowsocksr-libev package/helloworld
@@ -67,3 +67,6 @@ rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf package/small
 rm -rf package/SSRP
+
+# 下载源代码&更新feeds 
+./scripts/feeds update -a && ./scripts/feeds install -a
