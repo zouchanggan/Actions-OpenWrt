@@ -55,9 +55,9 @@ rm -rf package/helloworld/v2raya
 cp -r package/small/luci-app-ssr-plus package/helloworld
 cp -r package/SSRP/shadowsocks-rust package/helloworld
 cp -r package/SSRP/shadowsocksr-libev package/helloworld
+cp -r package/SSRP/v2raya package/helloworld
 cp -r package/small/luci-app-passwall package/passwall
 cp -r package/small/luci-app-passwall2 package/passwall
-cp -r package/SSRP/v2raya package/helloworld
 cp -r package/mosdns/mosdns feeds/packages/net
 
 # 删除软件包
