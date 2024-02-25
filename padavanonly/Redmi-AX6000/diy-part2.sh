@@ -46,19 +46,21 @@ git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/zouchanggan/SSRP.git package/SSRP
 
 # 删除软件包
-rm -rf package/helloworld/luci-app-ssr-plus
 rm -rf package/helloworld/shadowsocks-rust
 rm -rf package/helloworld/shadowsocksr-libev
 rm -rf package/helloworld/v2raya
 
 # 替换软件&依赖
-cp -r package/small/luci-app-ssr-plus package/helloworld
 cp -r package/SSRP/shadowsocks-rust package/helloworld
 cp -r package/SSRP/shadowsocksr-libev package/helloworld
 cp -r package/SSRP/v2raya package/helloworld
 cp -r package/small/luci-app-passwall package/passwall
 cp -r package/small/luci-app-passwall2 package/passwall
 cp -r package/mosdns/mosdns feeds/packages/net
+cp -r package/small/trojan feeds/packages/net
+cp -r package/small/trojan-go feeds/packages/net
+cp -r package/small/trojan-plus feeds/packages/net
+cp -r package/small/tuic-client feeds/packages/net
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
