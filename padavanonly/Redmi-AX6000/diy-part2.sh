@@ -35,7 +35,8 @@ rm -rf feeds/packages/lang/golang
 rm -rf package/libs/mbedtls
  
 #添加额外软件包
-git clone https://github.com/sbwml/packages_lang_golang -b 21.x feeds/packages/lang/golang
+git clone rm -rf feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
 git clone https://github.com/kenzok8/small.git package/small
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
 git clone https://github.com/fw876/helloworld.git package/helloworld
