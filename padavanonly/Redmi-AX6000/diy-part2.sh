@@ -62,10 +62,6 @@ cp -r package/SSRP/v2raya package/helloworld
 cp -r package/small/luci-app-passwall package/passwall
 cp -r package/small/luci-app-passwall2 package/passwall
 cp -r package/mosdns/mosdns feeds/packages/net
-cp -r package/small/trojan feeds/packages/net
-cp -r package/small/trojan-go feeds/packages/net
-cp -r package/small/trojan-plus feeds/packages/net
-cp -r package/small/tuic-client feeds/packages/net
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
