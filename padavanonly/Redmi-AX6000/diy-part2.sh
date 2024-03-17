@@ -38,26 +38,35 @@ rm -rf package/libs/mbedtls
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 git clone https://github.com/kenzok8/small.git package/small
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
 git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/zouchanggan/SSRP.git package/SSRP
 
 # 删除软件包
-rm -rf package/small/shadowsocks-rust
-rm -rf package/small/shadowsocksr-libev
-rm -rf package/small/v2raya
+rm -rf package/passwall/shadowsocks-rust
+rm -rf package/passwall/shadowsocksr-libev
+rm -rf package/passwall/v2ray-geodata
 
 # 替换软件&依赖
-cp -r package/SSRP/shadowsocks-rust package/small
-cp -r package/SSRP/shadowsocksr-libev package/small
-cp -r package/SSRP/v2raya package/small
+cp -r package/SSRP/update/shadowsocks-rust package/passwall
+cp -r package/SSRP/update/shadowsocksr-libev package/passwall
+cp -r package/SSRP/v2raya package/passwall
+cp -r package/small/luci-app-ssr-plus package/passwall
+cp -r package/small/luci-app-passwall package/passwall
+cp -r package/small/luci-app-passwall2 package/passwall
+cp -r package/small/luci-app-mosdns package/passwall
+cp -r package/small/mosdns package/passwall
+cp -r package/small/v2dat package/passwall
+cp -r package/small/v2ray-geodata package/passwall
+cp -r package/small/lua-neturl package/passwall
+cp -r package/small/redsocks2 package/passwall
+cp -r package/small/shadow-tls package/passwall
+
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
+rm -rf package/small
 rm -rf package/SSRP
-
-
-# 下载源代码&更新feeds 
-./scripts/feeds update -a && ./scripts/feeds install -a
