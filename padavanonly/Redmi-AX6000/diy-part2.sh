@@ -50,7 +50,7 @@ rm -rf package/passwall/v2ray-geodata
 # 替换软件&依赖
 cp -r package/SSRP/update/shadowsocks-rust package/passwall
 cp -r package/SSRP/update/shadowsocksr-libev package/passwall
-cp -r package/SSRP/v2raya package/passwall
+cp -r package/SSRP/update/v2raya package/passwall
 cp -r package/small/luci-app-ssr-plus package/passwall
 cp -r package/small/luci-app-passwall package/passwall
 cp -r package/small/luci-app-passwall2 package/passwall
