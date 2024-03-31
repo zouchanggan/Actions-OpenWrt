@@ -33,24 +33,49 @@ rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/open-app-filter
 rm -rf feeds/packages/lang/golang
 rm -rf package/libs/mbedtls
+rm -rf feeds/packages/net/ddns-go
  
 #添加额外软件包
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 git clone https://github.com/kenzok8/small.git package/small
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall
 git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/zouchanggan/SSRP.git package/SSRP
+git clone https://github.com/sirpdboy/sirpdboy-package.git package/sirpdboy-package
+git clone https://github.com/sirpdboy/luci-app-lucky.git package/lucky
+git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 
 # 删除软件包
-rm -rf package/small/shadowsocksr-libev
+rm -rf package/passwall/shadowsocks-rust
+rm -rf package/passwall/shadowsocksr-libev
+rm -rf package/passwall/v2ray-geodata
+rm -rf package/passwall/chinadns-ng
 
 # 替换软件&依赖
-cp -r package/SSRP/update/shadowsocksr-libev package/small
-cp -r package/SSRP/update/v2raya package/small
+cp -r package/SSRP/update/shadowsocks-rust package/passwall
+cp -r package/SSRP/update/shadowsocksr-libev package/passwall
+cp -r package/SSRP/update/v2raya package/passwall
+cp -r package/small/luci-app-ssr-plus package/passwall
+cp -r package/small/luci-app-passwall package/passwall
+cp -r package/small/luci-app-passwall2 package/passwall
+cp -r package/small/luci-app-mosdns package/passwall
+cp -r package/small/mosdns package/passwall
+cp -r package/small/v2dat package/passwall
+cp -r package/small/v2ray-geodata package/passwall
+cp -r package/small/lua-neturl package/passwall
+cp -r package/small/redsocks2 package/passwall
+cp -r package/small/shadow-tls package/passwall
+cp -r package/small/chinadns-ng package/passwall
+cp -r package/sirpdboy-package/luci-app-socat package/
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
+rm -rf feeds/luci/applications/luci-app-ddns-go
+rm -rf feeds/luci/applications/luci-app-socat
+rm -rf package/sirpdboy-package
+rm -rf package/small
 rm -rf package/SSRP
