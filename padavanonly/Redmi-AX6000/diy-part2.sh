@@ -31,14 +31,14 @@ git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 
 # 删除软件包
-# rm -rf package/passwall/shadowsocks-rust
-# rm -rf package/passwall/shadowsocksr-libev
+rm -rf package/passwall/shadowsocks-rust
+rm -rf package/passwall/shadowsocksr-libev
 rm -rf package/passwall/v2ray-geodata
 rm -rf package/passwall/chinadns-ng
 
 # 替换软件&依赖
-# cp -r package/SSRP/update/shadowsocks-rust package/passwall
-# cp -r package/SSRP/update/shadowsocksr-libev package/passwall
+cp -r package/SSRP/update/shadowsocks-rust package/passwall
+cp -r package/SSRP/update/shadowsocksr-libev package/passwall
 cp -r package/SSRP/update/v2raya package/passwall
 cp -r package/small/luci-app-ssr-plus package/passwall
 cp -r package/small/luci-app-passwall package/passwall
