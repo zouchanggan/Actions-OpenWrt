@@ -48,6 +48,3 @@ rm -rf feeds/luci/applications/luci-app-ddns-go
 rm -rf package/SSRP
 rm -rf package/istore/quickstart
 rm -rf package/istore/luci-app-quickstart
-
-# 下载源代码&更新feeds 
-./scripts/feeds update -a && ./scripts/feeds install -a
