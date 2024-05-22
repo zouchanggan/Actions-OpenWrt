@@ -50,7 +50,7 @@ cp -rf package/SSRP/update/shadowsocks-rust package/helloworld
 cp -rf package/SSRP/update/shadowsocksr-libev package/helloworld
 cp -rf package/SSRP/update/v2raya package/helloworld
 cp -rf package/passwall/luci-app-passwall package/passwall-packages
-cp -rf package/passwall/luci-app-passwall2 package/passwall-packages
+cp -rf package/passwall2/luci-app-passwall2 package/passwall-packages
 cp -rf package/small/luci-app-mosdns package/passwall-packages
 cp -rf package/small/mosdns package/passwall-packages
 cp -rf package/small/v2dat package/passwall-packages
