@@ -28,16 +28,22 @@ git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone https://github.com/zouchanggan/SSRP.git package/SSRP
+git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone https://github.com/fw876/helloworld.git package/helloworld
 
 # 删除软件包
-rm -rf package/small/shadowsocks-rust
-rm -rf package/small/shadowsocksr-libev
-rm -rf package/small/v2raya
+# rm -rf package/small/shadowsocks-rust
+# rm -rf package/small/shadowsocksr-libev
+# rm -rf package/small/v2raya
 
 # 替换软件&依赖
-cp -rf package/SSRP/update/shadowsocks-rust package/small
-cp -rf package/SSRP/update/shadowsocksr-libev package/small
-cp -rf package/SSRP/update/v2raya package/small
+# cp -rf package/SSRP/update/shadowsocks-rust package/small
+# cp -rf package/SSRP/update/shadowsocksr-libev package/small
+# cp -rf package/SSRP/update/v2raya package/small
+cp -rf package/passwall/luci-app-passwall package/passwall-packages
+cp -rf package/passwall/luci-app-passwall2 package/passwall-packages
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -46,5 +52,7 @@ rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-ddns-go
 rm -rf package/SSRP
-rm -rf package/istore/quickstart
-rm -rf package/istore/luci-app-quickstart
+rm -rf package/passwall
+rm -rf package/passwall2
+# rm -rf package/istore/quickstart
+# rm -rf package/istore/luci-app-quickstart
