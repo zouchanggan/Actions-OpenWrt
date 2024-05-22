@@ -44,6 +44,8 @@ git clone https://github.com/fw876/helloworld.git package/helloworld
 # cp -rf package/SSRP/update/v2raya package/small
 cp -rf package/passwall/luci-app-passwall package/passwall-packages
 cp -rf package/passwall/luci-app-passwall2 package/passwall-packages
+cp -rf package/small/luci-app-mosdns package/passwall-packages
+cp -rf package/small/mosdns package/passwall-packages
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -52,6 +54,7 @@ rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-ddns-go
 rm -rf package/SSRP
+rm -rf package/small
 rm -rf package/passwall
 rm -rf package/passwall2
 # rm -rf package/istore/quickstart
