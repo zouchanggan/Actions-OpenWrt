@@ -28,9 +28,9 @@ git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 git clone https://github.com/zouchanggan/SSRP.git package/SSRP
-git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
-git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
-git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 # 删除软件包
