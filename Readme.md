@@ -1,5 +1,8 @@
 # 借助 GitHub Actions 的 OpenWrt 在线自动编译.
 
+### 固件发布:
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/moruiris/Actions-OpenWrt?style=for-the-badge&label=固件下载)](https://github.com/moruiris/Actions-OpenWrt/releases/latest)
+
 OpenWrt官方有过三种分区固件：OpenWrt stock layout、OpenWrt layout和OpenWrt U-Boot layout。
 
 OpenWrt stock layout对应保留官方分区刷OpenWrt，我称为stock固件。
