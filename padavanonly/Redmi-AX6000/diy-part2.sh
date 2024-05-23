@@ -31,20 +31,20 @@ git clone https://github.com/zouchanggan/SSRP.git package/SSRP
 git clone https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
 git clone https://github.com/xiaorouji/openwrt-passwall.git package/passwall
 git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
-git clone https://github.com/fw876/helloworld.git package/helloworld
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 # 删除软件包
 # rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
 # rm -rf package/helloworld/shadowsocks-rust
-rm -rf package/helloworld/shadowsocksr-libev
+# rm -rf package/helloworld/shadowsocksr-libev
 rm -rf package/helloworld/v2raya
 
 # 替换软件&依赖
 # cp -rf package/SSRP/update/shadowsocks-rust package/passwall-packages
 cp -rf package/SSRP/update/shadowsocksr-libev package/passwall-packages
 # cp -rf package/SSRP/update/shadowsocks-rust package/helloworld
-cp -rf package/SSRP/update/shadowsocksr-libev package/helloworld
+# cp -rf package/SSRP/update/shadowsocksr-libev package/helloworld
 cp -rf package/SSRP/update/v2raya package/helloworld
 cp -rf package/passwall/luci-app-passwall package/passwall-packages
 cp -rf package/passwall2/luci-app-passwall2 package/passwall-packages
