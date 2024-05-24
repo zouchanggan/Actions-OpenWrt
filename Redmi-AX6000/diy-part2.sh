@@ -40,7 +40,7 @@ rm -rf package/helloworld/chinadns-ng
 rm -rf package/helloworld/mosdns
 # rm -rf package/helloworld/shadowsocks-rust
 # rm -rf package/helloworld/shadowsocksr-libev
-rm -rf package/helloworld/v2raya
+# rm -rf package/helloworld/v2raya
 
 # 替换软件&依赖
 # cp -rf package/SSRP/update/shadowsocks-rust package/small
