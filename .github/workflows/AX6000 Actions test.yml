@@ -7,9 +7,9 @@ on:
 env:
   REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: openwrt-21.02
-  CONFIG_FILE: Redmi-AX6000/.config
-  DIY_P1_SH: Redmi-AX6000/diy-part1.sh
-  DIY_P2_SH: Redmi-AX6000/diy-part2.sh
+  CONFIG_FILE: padavanonly/Redmi-AX6000/.config
+  DIY_P1_SH: padavanonly/Redmi-AX6000/diy-part1.sh
+  DIY_P2_SH: padavanonly/Redmi-AX6000/diy-part2.sh
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
@@ -20,53 +20,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-    - name: Before freeing up disk space
-      run: |
-        echo "Before freeing up disk space"
-        echo "=============================================================================="
-        df -hT
-        echo "=============================================================================="
-
-    - name: "Optimize Disk Space"
-      uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.1"
-      with:
-        operate_sudo: "True"
-        general_include: ".+"
-        general_exclude: |-
-          ^GCC$
-          ^G\+\+$
-          Clang
-          LLVM
-        docker_include: ".+"
-        docker_prune: "True"
-        docker_clean: "True"
-        apt_prune: "True"
-        apt_clean: "True"
-        homebrew_prune: "True"
-        homebrew_clean: "True"
-        npm_prune: "True"
-        npm_clean: "True"
-        os_swap: "True"
-
-    - name: Freeing up disk space
-      uses: easimon/maximize-build-space@master
-      with: 
-        root-reserve-mb: 2048
-        swap-size-mb: 1
-        remove-dotnet: 'true'
-        remove-android: 'true'
-        remove-haskell: 'true'
-        remove-codeql: 'true'
-        remove-docker-images: 'true'
-
-    - name: Free up disk space complete
-      run: |
-        echo "Free up disk space complete"
-        echo "=============================================================================="
-        df -hT
-        echo "=============================================================================="
-        
+    steps:       
     - name: 检查项目分支
       uses: actions/checkout@main
 
@@ -164,6 +118,7 @@ jobs:
         echo "::set-output name=release_tag::${{ env.date2 }}"
         touch release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "- 默认管理IP:192.168.1.10 用户名:root 密码:password" >> release.txt
         echo "📥 固件下载" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
