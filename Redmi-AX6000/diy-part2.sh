@@ -34,7 +34,7 @@ git clone https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 
 # 删除软件包
-# rm -rf package/passwall-packages/shadowsocks-rust
+rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/chinadns-ng
 rm -rf package/helloworld/mosdns
@@ -46,7 +46,7 @@ rm -rf package/helloworld/v2raya
 # cp -rf package/SSRP/update/shadowsocks-rust package/small
 # cp -rf package/SSRP/update/shadowsocksr-libev package/small
 # cp -rf package/SSRP/update/v2raya package/small
-# cp -rf package/SSRP/update/shadowsocks-rust package/passwall-packages
+cp -rf package/SSRP/update/shadowsocks-rust package/passwall-packages
 cp -rf package/SSRP/update/shadowsocksr-libev package/passwall-packages
 # cp -rf package/SSRP/update/shadowsocksr-libev package/helloworld
 cp -rf package/SSRP/update/shadowsocks-rust package/helloworld
