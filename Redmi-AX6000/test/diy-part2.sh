@@ -48,12 +48,12 @@ cp -r package/passwall/luci-app-passwall package/passwall-packages
 cp -r package/passwall2/luci-app-passwall2 package/passwall-packages
 cp -r package/small/luci-app-mosdns package/passwall-packages
 cp -r package/small/mosdns package/passwall-packages
-cp -r package/helloworld/v2dat package/passwall-packages
 cp -r package/small/v2ray-geodata package/passwall-packages
+cp -r package/small/chinadns-ng package/passwall-packages
+cp -r package/helloworld/v2dat package/passwall-packages
 cp -r package/helloworld/lua-neturl package/passwall-packages
 cp -r package/helloworld/redsocks2 package/passwall-packages
 cp -r package/helloworld/shadow-tls package/passwall-packages
-cp -r package/small/chinadns-ng package/passwall-packages
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -65,5 +65,6 @@ rm -rf package/SSRP
 rm -rf package/small
 rm -rf package/passwall
 rm -rf package/passwall2
+rm -rf package/helloworld
 # rm -rf package/istore/quickstart
 # rm -rf package/istore/luci-app-quickstart
