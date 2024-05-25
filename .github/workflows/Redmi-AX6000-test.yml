@@ -1,8 +1,7 @@
 name: Redmi-AX6000-test
 
 on:
-  schedule:
-    - cron: 0 16 * * 5
+  repository_dispatch:
   workflow_dispatch:
 
 env:
