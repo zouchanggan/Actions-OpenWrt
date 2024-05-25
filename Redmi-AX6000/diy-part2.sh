@@ -38,9 +38,9 @@ git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/chinadns-ng
 rm -rf package/helloworld/mosdns
-# rm -rf package/helloworld/shadowsocks-rust
 # rm -rf package/helloworld/shadowsocksr-libev
-# rm -rf package/helloworld/v2raya
+rm -rf package/helloworld/shadowsocks-rust
+rm -rf package/helloworld/v2raya
 
 # 替换软件&依赖
 # cp -rf package/SSRP/update/shadowsocks-rust package/small
@@ -48,9 +48,9 @@ rm -rf package/helloworld/mosdns
 # cp -rf package/SSRP/update/v2raya package/small
 # cp -rf package/SSRP/update/shadowsocks-rust package/passwall-packages
 cp -rf package/SSRP/update/shadowsocksr-libev package/passwall-packages
-# cp -rf package/SSRP/update/shadowsocks-rust package/helloworld
 # cp -rf package/SSRP/update/shadowsocksr-libev package/helloworld
-# cp -rf package/SSRP/update/v2raya package/helloworld
+cp -rf package/SSRP/update/shadowsocks-rust package/helloworld
+cp -rf package/SSRP/update/v2raya package/helloworld
 cp -rf package/passwall/luci-app-passwall package/passwall-packages
 cp -rf package/passwall2/luci-app-passwall2 package/passwall-packages
 cp -rf package/small/luci-app-mosdns package/passwall-packages
