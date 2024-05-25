@@ -39,6 +39,8 @@ rm -rf package/passwall-packages/shadowsocksr-libev
 rm -rf package/helloworld/shadowsocks-rust
 # rm -rf package/helloworld/shadowsocksr-libev
 rm -rf package/helloworld/v2raya
+rm -rf package/helloworld/chinadns-ng
+rm -rf package/helloworld/mosdns
 
 # 替换软件&依赖
 # cp -rf package/SSRP/update/shadowsocks-rust package/passwall-packages
@@ -51,6 +53,8 @@ cp -rf package/passwall2/luci-app-passwall2 package/passwall-packages
 cp -rf package/small/luci-app-mosdns package/passwall-packages
 cp -rf package/small/mosdns package/passwall-packages
 cp -rf package/small/v2dat package/passwall-packages
+cp -rf package/small/chinadns-ng package/helloworld
+cp -rf package/small/mosdns package/helloworld
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
