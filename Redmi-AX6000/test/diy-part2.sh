@@ -24,21 +24,37 @@ rm -rf feeds/packages/net/ddns-go
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 git clone --depth=1 https://github.com/kenzok8/small.git package/small
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall-packages.git package/passwall-packages
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall.git package/passwall
+git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/passwall2
+git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
+
 git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
+git clone https://github.com/zouchanggan/SSRP.git package/SSRP
 git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
-git clone https://github.com/zouchanggan/SSRP.git package/SSRP
 
 # 删除软件包
-# rm -rf package/small/shadowsocks-rust
-rm -rf package/small/shadowsocksr-libev
-rm -rf package/helloworld/v2raya
-rm -rf package/small/luci-app-bypass
+rm -rf package/passwall-packages/shadowsocks-rust
+# rm -rf package/passwall-packages/shadowsocksr-libev
+rm -rf package/passwall-packages/v2ray-geodata
+rm -rf package/passwall-packages/chinadns-ng
 
 # 替换软件&依赖
-# cp -rf package/SSRP/update/shadowsocks-rust package/small
-cp -rf package/SSRP/update/shadowsocksr-libev package/small
-cp -rf package/SSRP/update/v2raya package/small
+cp -r package/SSRP/update/shadowsocks-rust package/passwall-packages
+# cp -r package/SSRP/update/shadowsocksr-libev package/passwall-packages
+cp -r package/SSRP/update/v2raya package/passwall-packages
+cp -r package/helloworld/luci-app-ssr-plus package/passwall-packages
+cp -r package/passwall/luci-app-passwall package/passwall-packages
+cp -r package/passwall2/luci-app-passwall2 package/passwall-packages
+cp -r package/small/luci-app-mosdns package/passwall-packages
+cp -r package/small/mosdns package/passwall-packages
+cp -r package/helloworld/v2dat package/passwall-packages
+cp -r package/small/v2ray-geodata package/passwall-packages
+cp -r package/helloworld/lua-neturl package/passwall-packages
+cp -r package/helloworld/redsocks2 package/passwall-packages
+cp -r package/helloworld/shadow-tls package/passwall-packages
+cp -r package/small/chinadns-ng package/passwall-packages
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
@@ -47,5 +63,8 @@ rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-ddns-go
 rm -rf package/SSRP
+rm -rf package/small
+rm -rf package/passwall
+rm -rf package/passwall2
 # rm -rf package/istore/quickstart
 # rm -rf package/istore/luci-app-quickstart
