@@ -51,9 +51,9 @@ cp -r package/small/mosdns package/passwall-packages
 cp -r package/small/v2ray-geodata package/passwall-packages
 cp -r package/small/chinadns-ng package/passwall-packages
 cp -r package/small/v2dat package/passwall-packages
-cp -r package/helloworld/lua-neturl package/passwall-packages
-cp -r package/helloworld/redsocks2 package/passwall-packages
-cp -r package/helloworld/shadow-tls package/passwall-packages
+cp -r package/small/lua-neturl package/passwall-packages
+cp -r package/small/redsocks2 package/passwall-packages
+cp -r package/small/shadow-tls package/passwall-packages
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
