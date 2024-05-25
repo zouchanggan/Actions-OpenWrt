@@ -30,7 +30,7 @@ git clone --depth=1 https://github.com/xiaorouji/openwrt-passwall2.git package/p
 git clone --depth=1 https://github.com/fw876/helloworld.git package/helloworld
 git clone https://github.com/zouchanggan/OpenAppFilter.git package/OpenAppFilter
 git clone https://github.com/zouchanggan/SSRP.git package/SSRP
-git clone  https://github.com/gdy666/luci-app-lucky.git package/lucky
+git clone https://github.com/gdy666/luci-app-lucky.git package/lucky
 git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns-go
 
 # 删除软件包
