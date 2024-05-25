@@ -165,6 +165,10 @@ jobs:
         touch release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "- 默认管理IP:192.168.1.10 用户名:root 密码:password" >> release.txt
+        echo "- 集成科学上网插件酸酸乳、师夷长技以制夷" >> release.txt
+        echo "- 加入定时重启、TTYD、组播转换、DDNS-GO、MosDNS、应用过滤等功能" >> release.txt
+        echo "- QOS完全支持硬件加速，硬件加速下全面支持流量监控、网速统计" >> release.txt
+        echo "- 默认开启有线和无线的全部硬件加速、开启双ppe支持" >> release.txt
         echo "📥 固件下载" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
         
