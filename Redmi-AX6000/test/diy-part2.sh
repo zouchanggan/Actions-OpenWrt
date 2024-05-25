@@ -50,7 +50,7 @@ cp -r package/small/luci-app-mosdns package/passwall-packages
 cp -r package/small/mosdns package/passwall-packages
 cp -r package/small/v2ray-geodata package/passwall-packages
 cp -r package/small/chinadns-ng package/passwall-packages
-cp -r package/helloworld/v2dat package/passwall-packages
+cp -r package/small/v2dat package/passwall-packages
 cp -r package/helloworld/lua-neturl package/passwall-packages
 cp -r package/helloworld/redsocks2 package/passwall-packages
 cp -r package/helloworld/shadow-tls package/passwall-packages
