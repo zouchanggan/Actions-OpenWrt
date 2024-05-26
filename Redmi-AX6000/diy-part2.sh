@@ -49,6 +49,9 @@ rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-ddns-go
+rm -rf package/small/luci-app-bypass
+rm -rf package/feeds/luci/luci-app-alist
+rm -rf package/feeds/luci/luci-app-smartdns
 rm -rf package/SSRP
 # rm -rf package/istore/quickstart
 # rm -rf package/istore/luci-app-quickstart
