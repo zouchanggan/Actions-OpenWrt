@@ -35,13 +35,13 @@ git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns
 
 # 删除软件包
 # rm -rf package/passwall-packages/shadowsocksr-libev
-# rm -rf package/passwall-packages/shadowsocks-rust
+rm -rf package/passwall-packages/shadowsocks-rust
 rm -rf package/passwall-packages/v2ray-geodata
 rm -rf package/passwall-packages/chinadns-ng
 
 # 替换软件&依赖
 # cp -r package/SSRP/update/shadowsocksr-libev package/passwall-packages
-# cp -r package/SSRP/update/shadowsocks-rust package/passwall-packages
+cp -r package/SSRP/update/shadowsocks-rust package/passwall-packages
 cp -r package/SSRP/update/v2raya package/passwall-packages
 cp -r package/helloworld/luci-app-ssr-plus package/passwall-packages
 cp -r package/passwall/luci-app-passwall package/passwall-packages
