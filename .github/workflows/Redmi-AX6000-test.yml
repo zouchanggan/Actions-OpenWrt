@@ -163,7 +163,7 @@ jobs:
       run: |
         echo "::set-output name=release_tag::${{ env.date2 }}"
         touch release.txt
-        echo "由衷感谢237大神及所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "- 由衷感谢237大神及所有为openwrt无私奉献的大佬们" >> release.txt
         echo "- 默认管理IP:192.168.1.10 用户名:root 密码:password" >> release.txt
         echo "- 集成科学上网插件酸酸乳、师夷长技以制夷" >> release.txt
         echo "- 加入定时重启、TTYD、组播转换、DDNS-GO、MosDNS、应用过滤等功能" >> release.txt
