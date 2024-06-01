@@ -31,10 +31,11 @@ git clone https://github.com/sirpdboy/luci-app-ddns-go.git package/luci-app-ddns
 
 # 删除软件包
 rm -rf package/small/shadowsocksr-libev
-# rm -rf package/passwall-packages/shadowsocks-rust
+rm -rf package/small/v2raya
 
 # 替换软件&依赖
 cp -r package/SSRP/update/shadowsocksr-libev package/small
+cp -r package/SSRP/update/v2raya package/small
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
