@@ -124,7 +124,7 @@ jobs:
     - name: 更换默认IP
       run: |
         cd openwrt
-        sed -i 's/192.168.1.1/192.168.1.10/g' package/base-files/files/bin/config_generate
+        sed -i 's/192.168.6.1/192.168.1.10/g' package/base-files/files/bin/config_generate
         sed -i 's#^root::0:0:99999:7:::#root:$1$O73yltLo$SBOqN9kzSHZA5EuKYWXmG/::0:99999:7:::#' package/base-files/files/etc/shadow  
         
     - name: 编译固件
@@ -163,7 +163,7 @@ jobs:
       run: |
         echo "::set-output name=release_tag::${{ env.date2 }}"
         touch release.txt
-        echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "- 由衷感谢237大神及所有为openwrt无私奉献的大佬们" >> release.txt
         echo "- 默认管理IP:192.168.1.10 用户名:root 密码:password" >> release.txt
         echo "- 集成科学上网插件酸酸乳、师夷长技以制夷" >> release.txt
         echo "- 加入定时重启、TTYD、组播转换、DDNS-GO、MosDNS、应用过滤等功能" >> release.txt
