@@ -21,7 +21,7 @@ Lean源码只支持uboot固件。
 ## Redmi AX6000 闭源驱动固件 源码来源
 - padavanonly-[padavanonly/immortalwrtARM](https://github.com/padavanonly/immortalwrt-mt798x).
 ```bash
-git clone -b mt7986 --single-branch https://github.com/padavanonly/immortalwrtARM
+git clone --depth=1 https://github.com/padavanonly/immortalwrt-mt798x
 ```
 - hanwckf-[hanwckf/immortalwrt-mt798x](https://github.com/hanwckf/immortalwrt-mt798x).
 ```bash
