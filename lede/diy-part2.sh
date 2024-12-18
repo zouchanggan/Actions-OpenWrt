@@ -14,11 +14,17 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 cp -r package/small/openwrt-passwall/* package/small/ && rm -rf package/small/openwrt-passwall
 
 # 删除软件包
+rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall2
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
-rm -rf feeds/luci/applications/luci-app-ddns-go
-rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-lucky
+rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/luci/applications/luci-app-v2raya
+rm -rf feeds/luci/applications/luci-app-trojan-server
+rm -rf feeds/luci/applications/luci-app-dae
+rm -rf feeds/luci/applications/luci-app-daed
+rm -rf feeds/packages/net/dae
+rm -rf feeds/packages/net/daed
