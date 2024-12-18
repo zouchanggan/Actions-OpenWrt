@@ -30,7 +30,7 @@ rm -rf feeds/packages/net/lucky
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # 替换软件&依赖
-cp -r package/small/openwrt-passwall/ package/small && rm -rf small/openwrt-passwall
+cp -r package/small/openwrt-passwall/* package/small/ && rm -rf package/small/openwrt-passwall
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-passwall
