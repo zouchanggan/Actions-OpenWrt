@@ -11,7 +11,7 @@ rm -rf feeds/packages/lang/golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # 替换软件&依赖
-cp -r package/small/openwrt-passwall/* package/small/ && rm -rf package/small/openwrt-passwall
+cp -r feeds/small/openwrt-passwall/* feeds/small/ && rm -rf feeds/small/openwrt-passwall
 
 # 删除软件包
 rm -rf feeds/luci/applications/luci-app-mosdns
@@ -26,5 +26,7 @@ rm -rf feeds/luci/applications/luci-app-v2raya
 rm -rf feeds/luci/applications/luci-app-trojan-server
 rm -rf feeds/luci/applications/luci-app-dae
 rm -rf feeds/luci/applications/luci-app-daed
+rm -rf feeds/luci/applications/luci-app-smartdns
+rm -rf feeds/packages/net/smartdns
 rm -rf feeds/packages/net/dae
 rm -rf feeds/packages/net/daed
