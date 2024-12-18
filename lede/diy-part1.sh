@@ -2,4 +2,4 @@
 #
 # Add a feed source
 #echo 'src-git moruiris https://github.com/moruiris/openwrt-packages;lede' >>feeds.conf.default
-src-git small https://github.com/zouchanggan/openwrt-packages;small >>feeds.conf.default
+git clone -b small https://github.com/zouchanggan/openwrt-packages ./package/small
