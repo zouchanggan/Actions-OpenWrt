@@ -34,6 +34,7 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 # 9-删除软件包(防止插件冲突，删除重复)
 rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-passwall
+rm -rf feeds/luci/applications/luci-app-passwall2
 rm -rf feeds/luci/applications/luci-app-ssr-plus
 rm -rf feeds/luci/applications/luci-app-vssr
 rm -rf feeds/luci/applications/luci-app-ddns-go
@@ -42,5 +43,5 @@ rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-lucky
 rm -rf feeds/luci/applications/luci-app-smartdns
 
+# 10-更新feeds 
 ./scripts/feeds update -a && ./scripts/feeds install -a
-
