@@ -150,7 +150,7 @@ jobs:
     - name: config文件上传自动更新2
       run: |
         cd $GITHUB_WORKSPACE
-        git clone -b main https://github.com/moruiris/Actions-OpenWrt.git main
+        git clone -b main https://github.com/zouchanggan/Actions-OpenWrt.git main
     - name: config文件上传自动更新3
       env: 
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
@@ -160,7 +160,7 @@ jobs:
         if git status --porcelain | grep .; then
           git add .
           git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
-          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/moruiris/Actions-OpenWrt.git" HEAD:main
+          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/zouchanggan/Actions-OpenWrt.git" HEAD:main
         else
           echo "nothing to commit"
           exit 0
