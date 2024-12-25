@@ -1,5 +1,5 @@
-#!/bin/bash
-#
-# Add a feed source
-#echo 'src-git moruiris https://github.com/moruiris/openwrt-packages;lede' >>feeds.conf.default
-git clone -b lede https://github.com/moruiris/openwrt-packages ./package/openwrt-packages
+# DIY-1 此脚本功能：添加外部插件
+# =======================================================================================================================
+# 添加外部软件源
+# git clone -b openwrt https://github.com/zouchanggan/openwrt-packages ./package/small
+# echo "src-git small https://github.com/zouchanggan/openwrt-packages.git;openwrt" >> "feeds.conf.default"
