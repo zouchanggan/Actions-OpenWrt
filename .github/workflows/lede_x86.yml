@@ -1,9 +1,14 @@
 name: lede_x86
 
-on:
-  schedule:
-    - cron: 0 16 * * *
+on: 
   workflow_dispatch:
+    inputs:
+      LAN_IP:
+        description: 'Set LAN IP Address'
+        required: true
+        default: '192.168.1.1'
+  schedule:
+    - cron: 20 00 * * *
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
@@ -15,12 +20,13 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
-  OPENWRT_NAME: lede
-  OPENWRT_NAME1: x86
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
+
+    permissions:
+      contents: write
 
     steps:
     - name: 检查项目分支
@@ -30,34 +36,47 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        ( sudo -E apt-get -qq update
-        sudo -E apt-get -qq install sudo apt install -y ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential \
-          bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib \
-          git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libglib2.0-dev libgmp3-dev libltdl-dev \
-          libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libreadline-dev libssl-dev libtool lrzsz \
-          mkisofs msmtp nano ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools \
-          libpython3-dev qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip \
-          vim wget xmlto xxd zlib1g-dev python3-setuptools
-        sudo -E apt-get -qq purge azure-cli ghc* zulu* hhvm llvm* firefox powershell openjdk* dotnet* google* mysql* php* android*
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
+        sudo -E apt-get -qq update
+        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
         sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean ) &
+        sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir
+
+    - name: 清理磁盘空间(Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # when set to "true" but frees about 6 GB
+        tool-cache: true
         
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: false
+        dotnet: false
+        haskell: false
+        large-packages: false
+        swap-storage: false
+
     - name: 下载固件源码
+      working-directory: /workdir
       run: |
+        df -hT $PWD
         git clone $REPO_URL -b $REPO_BRANCH openwrt
-                 
+        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+
     - name: 加载feeds.conf.default & DIY_P1_SH
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         chmod +x $DIY_P1_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P1_SH
-        
+
     - name: 更新 & 安装 feeds
-      working-directory: ./openwrt
       run: |
+        cd openwrt
         ./scripts/feeds update -a
         ./scripts/feeds install -a
 
@@ -68,6 +87,18 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
 
+    - name: 设置LAN IP地址（路由器登录地址）
+      run: |
+        cd openwrt
+        SET_IP=${{ github.event.inputs.LAN_IP }}
+        if [[ $SET_IP =~ ^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$ ]]; then
+            #修改默认IP地址
+            sed -i "s/192\.168\.[0-9]*\.[0-9]*/$SET_IP/g" package/base-files/files/bin/config_generate
+            echo "Set LAN IP Address: $SET_IP"
+        else
+            echo "Invalid IP address, use default."
+        fi
+
     - name: 下载安装包
       id: package
       run: |
@@ -76,25 +107,23 @@ jobs:
         make download -j$(nproc)
         find dl -size -1024c -exec ls -l {} \;
         find dl -size -1024c -exec rm -f {} \;
-        
+
     - name: 编译固件
       id: compile
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
         make -j$(nproc) || make -j1 || make -j1 V=s
-        echo "status=success" >> $GITHUB_OUTPUT
-              
-    - name: 设置当前的日期
-      id: date
-      run: |
-        cd openwrt
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=$(cat DEVICE_NAME)" >> $GITHUB_ENV
-        echo "date1=$(date +'%Y.%m.%d-%H.%M')" >> $GITHUB_ENV
-        echo "date2=$(date +'%Y.%m.%d')" >> $GITHUB_ENV
-        echo "date3=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV
-        
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*TARGET_.*_(.*)_DEVICE_.*=y/\1/' > TARGET_NAME
+        [ -s TARGET_NAME ] && echo "TARGET_NAME=$(cat TARGET_NAME)" >> $GITHUB_ENV
+        sed -n 's/.*lan) ipad=${ipaddr:-"\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)"} ;;.*/\1/p' package/base-files/files/bin/config_generate | head -n 1 > IP_ADDR
+        [ -s IP_ADDR ] && echo "IP_ADDR=$(cat IP_ADDR)" >> $GITHUB_ENV
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "FILE_TIME=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV
+        echo "TAG_TIME=$(date +"%Y.%m.%d-%H%M%S")" >> $GITHUB_ENV
+
     - name: 查看磁盘使用情况
       if: (!cancelled())
       run: df -hT
@@ -102,67 +131,62 @@ jobs:
     - name: 整理文件并重命名
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled()
-      run: | 
-        mkdir firmware && find openwrt/bin/targets/*/*/ -maxdepth 1 \
-        -name "*squashfs-combined.vmdk" \
-        -or -name "*squashfs-combined.img.gz" \
-        | xargs -i mv -f {} ./firmware/
-        cp openwrt/.config ./firmware/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_x86-64.config
-        cd firmware
-        sudo -E apt-get -qq install rename
-        rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.vmdk
-        rename 's/^/${{ env.date1 }}_${{ env.OPENWRT_NAME }}_/' *.img.gz
+      run: |
+        cd openwrt/bin/targets/*/*
+        rm -rf packages && mkdir packages
+        find -name "*.manifest*" | xargs -i mv -f {} packages
+        find -name "*vmlinuz*" | xargs -i mv -f {} packages
+        find -name "*buildinfo*" | xargs -i mv -f {} packages
+        find -name "*json*" | xargs -i mv -f {} packages
+        find -name "*sha256sums*" | xargs -i mv -f {} packages
+        rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
-      
-    - name: 上传固件到github
+
+    - name: 打包上传固件到Actions Artifacts
       uses: actions/upload-artifact@main
       if: steps.organize.outputs.status == 'success' && !cancelled()
       with:
-        name: ${{ env.date1 }}_${{ env.OPENWRT_NAME }}_${{ env.DEVICE_NAME }}
+        name: OpenWrt-Mini${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
         path: ${{ env.FIRMWARE }}
 
-    - name: 生成release标签
+    - name: 生成固件Release标签
       id: tag
       if: env.UPLOAD_RELEASE == 'true' && !cancelled()
       run: |
-        echo "::set-output name=release_tag::${{ env.date2 }}"
+        echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
+        echo "使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "OpenWrt-Mini_ X86_64（支持ipv6）" >> release.txt
+        echo "管理地址：${{ env.IP_ADDR }}" >> release.txt
+        echo "默认密码：无密码" >> release.txt
+        echo "插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
         echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
         echo "📥 固件下载" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
-        
-    - name: 发布至release
-      uses: softprops/action-gh-release@v1
+
+    - name: 发布固件至Release
+      uses: softprops/action-gh-release@v2
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        files: ${{ env.FIRMWARE }}/*
-        name: ${{ env.date3 }}
+        name: ${{ env.FILE_TIME }} -OpenWrt-6.12-合集版
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
+        files: ${{ env.FIRMWARE }}/* 
+        
+    - name: 清理编译流程
+      uses: Mattraks/delete-workflow-runs@main
+      with:
+        retain_days: 50
+        keep_minimum_runs: 10
 
-    - name: config文件上传自动更新1
-      run : |
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        sudo timedatectl set-timezone "Asia/Shanghai"
-    - name: config文件上传自动更新2
-      run: |
-        cd $GITHUB_WORKSPACE
-        git clone -b main https://github.com/moruiris/Actions-OpenWrt.git main
-    - name: config文件上传自动更新3
-      env: 
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      run: |
-        cp openwrt/.config $GITHUB_WORKSPACE/main/${{ env.OPENWRT_NAME }}/${{ env.OPENWRT_NAME1 }}/.config
-        cd $GITHUB_WORKSPACE/main
-        if git status --porcelain | grep .; then
-          git add .
-          git commit -am "update $(date +%Y-%m-%d" "%H:%M:%S)"
-          git push --quiet "https://${{ secrets.ACCESS_TOKEN }}@github.com/moruiris/Actions-OpenWrt.git" HEAD:main
-        else
-          echo "nothing to commit"
-          exit 0
-        fi || exit 0
+    - name: 删除旧版固件
+      uses: dev-drprasad/delete-older-releases@master
+      if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+      with:
+        keep_latest: 10
+        delete_tags: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
