@@ -87,5 +87,5 @@ rm -rf feeds/luci/applications/luci-app-daed
 rm -rf feeds/luci/applications/luci-app-v2raya
 rm -rf feeds/luci/applications/luci-app-v2ray-server
 
-# 10-更新feeds 
+# 11-更新feeds 
 ./scripts/feeds update -a && ./scripts/feeds install -a
