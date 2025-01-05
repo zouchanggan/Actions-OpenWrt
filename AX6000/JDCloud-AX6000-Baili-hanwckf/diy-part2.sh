@@ -20,6 +20,8 @@ sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-defaul
 git clone -b openwrt https://github.com/zouchanggan/openwrt-packages ./package/small
 
 # 删除软件依赖
+rm -rf feeds/packages/net/{lucky,alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/packages/net/chinadns-ng 
 rm -rf feeds/packages/net/hysteria 
 rm -rf feeds/packages/net/mosdns
