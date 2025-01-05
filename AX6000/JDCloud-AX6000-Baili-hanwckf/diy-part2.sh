@@ -61,9 +61,10 @@ rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-lucky
 rm -rf feeds/luci/applications/luci-app-smartdns
-rm -rf packages/small/luci-app-homeproxy
-rm -rf packages/small/luci-app-mihomo
-rm -rf packages/small/mihomo
+rm -rf package/small/luci-app-homeproxy
+rm -rf package/small/luci-app-mihomo
+rm -rf package/small/mihomo
+rm -rf feeds/luci/applications/luci/luci-app-alist
 
 ##-----------------Add OpenClash dev core------------------
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
