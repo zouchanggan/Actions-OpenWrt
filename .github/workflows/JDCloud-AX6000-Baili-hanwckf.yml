@@ -162,7 +162,7 @@ jobs:
                 fi
         else
                 if [ "$firmware" != "default" ]; then
-                        cp $GITHUB_WORKSPACE/JDCloud-AX6000-Baili-hanwckf/mt79xx_20231229-4012a0_mt7986-fw-20240823.tar.xz dl/mt79xx_20231229-4012a0.tar.xz
+                        cp $GITHUB_WORKSPACE/AX6000/JDCloud-AX6000-Baili-hanwckf/mt79xx_20231229-4012a0_mt7986-fw-20240823.tar.xz dl/mt79xx_20231229-4012a0.tar.xz
                 fi
         fi
         echo "Use WiFi Driver: $wifi_driver-fw-$firmware"
@@ -171,7 +171,7 @@ jobs:
       run: |
         cd openwrt
         if [ ${{ github.event.inputs.SW_DRIVER }} == 'DSA' ]; then
-                cp $GITHUB_WORKSPACE/JDCloud-AX6000-Baili-hanwckf/mt7986a-dsa-jdcloud-re-cp-03.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-jdcloud-re-cp-03.dts
+                cp $GITHUB_WORKSPACE/AX6000/JDCloud-AX6000-Baili-hanwckf/mt7986a-dsa-jdcloud-re-cp-03.dts target/linux/mediatek/files-5.4/arch/arm64/boot/dts/mediatek/mt7986a-jdcloud-re-cp-03.dts
                 sed -i '/jdcloud,re-cp-03)/ {n; /eth0/ {s/eth0/lan1 lan2 lan3 lan4/; n; /ucidef_add_switch/ d}}' target/linux/mediatek/mt7986/base-files/etc/board.d/02_network
                 echo "Use Switch Driver: DSA"
         else
