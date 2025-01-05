@@ -27,6 +27,7 @@ rm -rf feeds/packages/net/hysteria
 rm -rf feeds/packages/net/mosdns
 rm -rf feeds/packages/net/shadowsocksr-libev
 rm -rf feeds/packages/net/shadowsocks-rust 
+rm -rf feeds/packages/net/shadowsocks-libev 
 rm -rf feeds/packages/net/tcping 
 rm -rf feeds/packages/net/trojan
 rm -rf feeds/packages/net/trojan-go
