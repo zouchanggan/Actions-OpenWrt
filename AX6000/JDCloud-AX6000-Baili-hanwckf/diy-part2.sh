@@ -48,6 +48,7 @@ git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 
 # 删除软件包
+rm -rf feeds/luci/applications/luci-app-mosdns
 rm -rf feeds/luci/applications/luci-app-passwall
 rm -rf feeds/luci/applications/luci-app-passwall2
 rm -rf feeds/luci/applications/luci-app-ssr-plus
@@ -56,7 +57,7 @@ rm -rf feeds/luci/applications/luci-app-ddns-go
 rm -rf feeds/luci/applications/luci-app-appfilter
 rm -rf feeds/luci/applications/luci-app-openclash
 rm -rf feeds/luci/applications/luci-app-lucky
-
+rm -rf feeds/luci/applications/luci-app-smartdns
 
 ##-----------------Add OpenClash dev core------------------
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
