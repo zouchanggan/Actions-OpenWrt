@@ -10,6 +10,10 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 ##-----------------Del duplicate packages------------------
+
+# 删除默认密码
+sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
+
 # 添加外部软件源
 git clone -b openwrt https://github.com/zouchanggan/openwrt-packages ./package/small
 
