@@ -11,9 +11,6 @@
 #
 ##-----------------Del duplicate packages------------------
 
-# 删除默认密码
-sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
-
 # 添加外部软件源
 git clone -b openwrt https://github.com/zouchanggan/openwrt-packages ./package/small
 
@@ -41,6 +38,7 @@ rm -rf package/small/mihomo
 
 # 更新替换golang
 git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 
 # 删除软件包(防止插件冲突，删除重复)
 rm -rf feeds/luci/applications/luci-app-mosdns
