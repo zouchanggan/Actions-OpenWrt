@@ -27,10 +27,15 @@ on:
         - v7.6.7.2-fw-20240823(recommend)
         - v7.6.6.1-fw-20230808(recommend)
         - v7.6.7.2-fw-default
+        - v7.6.7.2-fw-20221208
+        - v7.6.7.2-fw-20230421
+        - v7.6.7.2-fw-20230808
+        - v7.6.7.2-fw-20231024
         - v7.6.6.1-fw-default
         - v7.6.6.1-fw-20221208
         - v7.6.6.1-fw-20230421
         - v7.6.6.1-fw-20231024
+        - v7.6.6.1-fw-20240823
       SW_DRIVER:
         description: 'Choose Switch Driver'
         required: true
@@ -53,8 +58,8 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: 'false'
-  schedule:
-    - cron: 0 16 * * *
+#  schedule:
+#    - cron: 0 16 * * *
 
 env:
   ###############手动修改##############
@@ -81,29 +86,33 @@ jobs:
     - name: 检查项目分支
       uses: actions/checkout@main
 
-    - name: 清理磁盘空间
-      uses: jlumbroso/free-disk-space@main
-      with:
-        tool-cache: true        
-        android: true
-        dotnet: true
-        haskell: true
-        large-packages: true
-        swap-storage: true
-
     - name: 初始化编译环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL
-        sudo docker image prune --all --force
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install ack antlr3 asciidoc autoconf automake autopoint binutils bison build-essential bzip2 ccache cmake cpio curl device-tree-compiler fastjar flex gawk gettext gcc-multilib g++-multilib git gperf haveged help2man intltool libc6-dev-i386 libelf-dev libfuse-dev libglib2.0-dev libgmp3-dev libltdl-dev libmpc-dev libmpfr-dev libncurses5-dev libncursesw5-dev libpython3-dev libreadline-dev libssl-dev libtool lrzsz mkisofs msmtp ninja-build p7zip p7zip-full patch pkgconf python2.7 python3 python3-pyelftools python3-setuptools qemu-utils rsync scons squashfs-tools subversion swig texinfo uglifyjs upx-ucl unzip vim wget xmlto xxd zlib1g-dev
+        sudo -E apt-get -qq install $(curl -fsSL git.io/depends-ubuntu-2004)
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
+
+    - name: 清理磁盘空间(Ubuntu)
+      uses: jlumbroso/free-disk-space@main
+      with:
+        # this might remove tools that are actually needed,
+        # when set to "true" but frees about 6 GB
+        tool-cache: true
+        
+        # all of these default to true, but feel free to set to
+        # "false" if necessary for your workflow
+        android: false
+        dotnet: false
+        haskell: false
+        large-packages: false
+        swap-storage: false
 
     - name: 下载固件源码
       working-directory: /workdir
@@ -153,13 +162,11 @@ jobs:
         firmware=$(echo "${{ github.event.inputs.WIFI_DRIVER }}" | sed -E 's/.*fw-([0-9]{8}|default).*/\1/g')
         if [ "$wifi_driver" == "v7.6.6.1" ]; then
                 sed -i 's/CONFIG_MTK_MT_WIFI_DRIVER_VERSION_7672=y/CONFIG_MTK_MT_WIFI_DRIVER_VERSION_7661=y/g' .config
-                if [ "$firmware" != "default" ]; then
-                        sed -i "/CONFIG_MTK_MT_WIFI_DRIVER_VERSION/a CONFIG_MTK_MT_WIFI_MT7986_${firmware}=y" .config
-                fi
+        fi
+        if [ "$firmware" == "default" ]; then
+                sed -i 's/CONFIG_MTK_MT_WIFI_MT7986_20240823=y/CONFIG_MTK_MT_WIFI_MT7986_DEFAULT_FIRMWARE=y/g' .config
         else
-                if [ "$firmware" != "default" ]; then
-                        cp $GITHUB_WORKSPACE/AX6000/JDCloud-AX6000-Baili-hanwckf/mt79xx_20231229-4012a0_mt7986-fw-20240823.tar.xz dl/mt79xx_20231229-4012a0.tar.xz
-                fi
+        	sed -i 's/CONFIG_MTK_MT_WIFI_MT7986_20240823=y/CONFIG_MTK_MT_WIFI_MT7986_${firmware}=y/g' .config
         fi
         echo "Use WiFi Driver: $wifi_driver-fw-$firmware"
 
@@ -290,7 +297,7 @@ jobs:
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布固件至Release
-      uses: softprops/action-gh-release@master
+      uses: softprops/action-gh-release@v2.1.0
       if: steps.tag.outputs.status == 'success' && !cancelled()
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
