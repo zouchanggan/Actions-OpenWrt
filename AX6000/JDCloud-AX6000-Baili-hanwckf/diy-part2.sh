@@ -30,7 +30,7 @@ rm -rf feeds/packages/net/trojan-plus
 rm -rf feeds/packages/net/tuic-client  
 rm -rf feeds/packages/net/v2ray-geodata
 rm -rf feeds/packages/net/open-app-filter
-rm -rf feeds/packages/net/gn
+rm -rf feeds/packages/net/gn && cp -r package/small/gn feeds/packages/net
 rm -rf package/libs/mbedtls
 rm -rf feeds/packages/net/ddns-go
 rm -rf feeds/packages/net/lucky
