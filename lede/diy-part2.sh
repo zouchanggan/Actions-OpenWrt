@@ -33,7 +33,7 @@ sed -i 's/${g}.*/${a}${b}${c}${d}${e}${f}${hydrid}/g' package/lean/autocore/file
 git clone https://github.com/WukongMaster/luci-app-poweroff.git package/luci-app-poweroff
 
 # 3-添加 opentomcat 主题
-git clone https://github.com/WukongMaster/luci-theme-opentomcat.git package/luci-theme-opentomcat
+# git clone https://github.com/WukongMaster/luci-theme-opentomcat.git package/luci-theme-opentomcat
 
 # 4-添加 luci-theme-kucat 主题
 # git clone https://github.com/sirpdboy/luci-theme-kucat.git package/luci-theme-kucat
