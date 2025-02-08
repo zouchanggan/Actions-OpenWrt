@@ -11,7 +11,7 @@ sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.12/g' ./target/linux/x86/Makef
 sed -i '/CYXluq4wUazHjmCDBCqXF/d' package/lean/default-settings/files/zzz-default-settings
 
 # 4-修改默认主题
-sed -i 's/luci-theme-bootstrap/luci-theme-opentomcat/g' feeds/luci/collections/luci/Makefile
+sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
 # 5-修改时间格式
 sed -i 's/os.date()/os.date("%Y-%m-%d %H:%M:%S")/g' package/lean/autocore/files/*/index.htm
@@ -87,5 +87,9 @@ rm -rf feeds/luci/applications/luci-app-daed
 rm -rf feeds/luci/applications/luci-app-v2raya
 rm -rf feeds/luci/applications/luci-app-v2ray-server
 
-# 11-更新feeds 
+# 11-删除旧主题
+rm -rf feeds/luci/themes/luci-theme-argon
+rm -rf feeds/luci/themes/luci-theme-design
+
+# 12-更新feeds 
 ./scripts/feeds update -a && ./scripts/feeds install -a
