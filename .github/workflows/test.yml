@@ -182,7 +182,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_DATE }} -padavanonly-jdcloud_re-cp-03
+        name: ${{ env.FILE_DATE }} -padavanonly-jdcloud_re-cp-03-AX6000-Baili
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
