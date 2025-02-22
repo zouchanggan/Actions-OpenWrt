@@ -1,4 +1,4 @@
-name:  OpenWrt-合集版
+name:  JDCloud-AX6000-Baili-padavanonly-test
 
 on: 
   workflow_dispatch:
