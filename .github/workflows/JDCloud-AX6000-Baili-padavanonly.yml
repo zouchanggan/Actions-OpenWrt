@@ -1,4 +1,4 @@
-name:  JDCloud-AX6000-Baili-padavanonly-test
+name:  JDCloud-AX6000-Baili-padavanonly
 
 on: 
   workflow_dispatch:
