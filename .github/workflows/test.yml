@@ -168,13 +168,13 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "使用源码：${{ env.REPO_URL }}" >> release.txt
-        echo "管理地址：${{ env.IP_ADDR }}" >> release.txt
-        echo "默认密码：无密码" >> release.txt
-        echo "插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
-        echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
-        echo "📥 固件下载" >> release.txt
-        echo "status=success" >> $GITHUB_OUTPUT
+        echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "- 管理地址：${{ env.IP_ADDR }}" >> release.txt
+        echo "- 默认密码：无密码" >> release.txt
+        echo "- 插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
+        echo "- 由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "- 📥 固件下载" >> release.txt
+        echo "- status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
       uses: softprops/action-gh-release@v2
