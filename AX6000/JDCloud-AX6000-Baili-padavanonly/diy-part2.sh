@@ -57,7 +57,7 @@ rm -rf package/small/luci-app-homeproxy
 
 # 删除旧主题
 rm -rf feeds/luci/themes/luci-theme-argon
-rm -rf feeds/luci/themes/luci-theme-design
+rm -rf package/small/luci-theme-design
 
 ##-----------------Add OpenClash dev core------------------
 curl -sL -m 30 --retry 2 https://raw.githubusercontent.com/vernesong/OpenClash/core/master/dev/clash-linux-arm64.tar.gz -o /tmp/clash.tar.gz
