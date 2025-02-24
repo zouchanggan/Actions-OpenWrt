@@ -13,7 +13,9 @@
 
 # 添加外部软件源
 git clone -b openwrt https://github.com/zouchanggan/openwrt-packages ./package/small
-git clone https://github.com/esirplayground/luci-app-poweroff package/luci-app-poweroff
+
+# 添加 PowerOff 关机插件
+git clone https://github.com/WukongMaster/luci-app-poweroff package/luci-app-poweroff
 
 # 删除依赖(防止插件冲突，删除重复)
 rm -rf feeds/packages/net/{lucky,alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
