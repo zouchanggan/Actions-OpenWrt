@@ -39,7 +39,8 @@ rm -rf feeds/packages/net/lucky
 rm -rf package/small/mihomo
 
 # 更新替换golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+git clone https://github.com/kenzok8/golang -b 1.23 feeds/packages/lang/golang
 git clone https://github.com/zouchanggan/mbedtls.git package/libs/mbedtls
 
 # 删除软件包(防止插件冲突，删除重复)
