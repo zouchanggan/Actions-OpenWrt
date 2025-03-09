@@ -69,7 +69,9 @@ rm -rf feeds/packages/net/open-app-filter
 rm -rf feeds/packages/net/gn
 
 # 9-更新替换golang
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+# git clone https://github.com/kenzok8/golang -b 1.23 feeds/packages/lang/golang
+git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
 
 # 10-删除软件包(防止插件冲突，删除重复)
 rm -rf feeds/luci/applications/luci-app-mosdns
