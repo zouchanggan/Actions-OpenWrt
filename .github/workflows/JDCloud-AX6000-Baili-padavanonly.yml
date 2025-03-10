@@ -13,7 +13,7 @@ on:
 env:
   ###############手动修改##############
   OPENWRT_NAME: padavanonly
-  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x-23.05
+  REPO_URL: https://github.com/padavanonly/immortalwrt-mt798x
   REPO_BRANCH: openwrt-23.05
   FEEDS_CONF: AX6000/JDCloud-AX6000-Baili-padavanonly/feeds.conf.default
   CONFIG_FILE: AX6000/JDCloud-AX6000-Baili-padavanonly/2305.config
@@ -132,7 +132,7 @@ jobs:
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
         sed -n 's/.*lan) ipad=${ipaddr:-"\([0-9]\+\.[0-9]\+\.[0-9]\+\.[0-9]\+\)"} ;;.*/\1/p' package/base-files/files/bin/config_generate | head -n 1 > IP_ADDR
         [ -s IP_ADDR ] && echo "IP_ADDR=$(cat IP_ADDR)" >> $GITHUB_ENV
-        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+        echo "FILE_DATE=$(date +"%Y.%m.%d-%H%M")" >> $GITHUB_ENV
         echo "FILE_TIME=$(date "+%Y年%m月%d日")" >> $GITHUB_ENV
         echo "TAG_TIME=$(date +"%Y.%m.%d-%H%M%S")" >> $GITHUB_ENV
 
@@ -168,12 +168,12 @@ jobs:
       run: |
         echo "release_tag=${{ env.TAG_TIME }}" >> $GITHUB_OUTPUT
         touch release.txt
-        echo "使用源码：${{ env.REPO_URL }}" >> release.txt
-        echo "管理地址：${{ env.IP_ADDR }}" >> release.txt
-        echo "默认密码：无密码" >> release.txt
-        echo "插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
-        echo "由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
-        echo "📥 固件下载" >> release.txt
+        echo "- 使用源码：${{ env.REPO_URL }}" >> release.txt
+        echo "- 管理地址：${{ env.IP_ADDR }}" >> release.txt
+        echo "- 默认密码：无密码" >> release.txt
+        echo "- 插件清单：ShadowSocksR Plus+，PassWall，OpenClash" >> release.txt
+        echo "- 由衷感谢所有为openwrt无私奉献的大佬们" >> release.txt
+        echo "- 📥 固件下载" >> release.txt
         echo "status=success" >> $GITHUB_OUTPUT
 
     - name: 发布新版固件
@@ -182,7 +182,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
       with:
-        name: ${{ env.FILE_DATE }}-padavanonly-jdcloud_re-cp-03
+        name: ${{ env.FILE_DATE }} -padavanonly-jdcloud_re-cp-03-AX6000-Baili
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/* 
