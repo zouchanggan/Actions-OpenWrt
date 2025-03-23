@@ -13,8 +13,10 @@ on:
 env:
   REPO_URL: https://github.com/openwrt/openwrt
   REPO_BRANCH: openwrt-24.10
-  CONFIG_FILE: configs/x86_64.config
-  DIY_SCRIPT: diy/diy-script.sh
+  FEEDS_CONF: Openwrt/feeds.conf.default
+  CONFIG_FILE: Openwrt/x86/x86_64.config
+  DIY_P1_SH: Openwrt/diy-part1.sh
+  DIY_P2_SH: Openwrt/diy-part2.sh
   CLASH_KERNEL: amd64
   CACHE_TOOLCHAIN: true
   UPLOAD_BIN_DIR: false
