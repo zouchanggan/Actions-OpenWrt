@@ -51,45 +51,15 @@ git clone https://git.kejizero.online/zhao/openwrt_helloworld.git package/hellow
 git clone https://github.com/oppen321/openwrt-package package/openwrt-package
 
 # 8-删除依赖(防止插件冲突，删除重复)
-rm -rf feeds/packages/net/{lucky,alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/net/{xray-core,v2ray-core,v2ray-geodata,sing-box,adguardhome,socat,zerotier}
+rm -rf feeds/packages/net/alist feeds/luci/applications/luci-app-alist
 rm -rf feeds/packages/utils/v2dat
 rm -rf feeds/packages/lang/golang
-rm -rf feeds/packages/net/dae
-rm -rf feeds/packages/net/daed
-rm -rf feeds/packages/net/chinadns-ng 
-rm -rf feeds/packages/net/hysteria 
-rm -rf feeds/packages/net/shadowsocksr-libev
-rm -rf feeds/packages/net/shadowsocks-rust 
-rm -rf feeds/packages/net/shadowsocks-libev 
-rm -rf feeds/packages/net/tcping 
-rm -rf feeds/packages/net/trojan
-rm -rf feeds/packages/net/trojan-go
-rm -rf feeds/packages/net/trojan-plus
-rm -rf feeds/packages/net/tuic-client  
-rm -rf feeds/packages/net/v2ray-geodata
-rm -rf feeds/packages/net/open-app-filter
-rm -rf feeds/packages/net/gn
 
 # 9-更新替换golang
 # git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 # git clone https://github.com/kenzok8/golang -b 1.23 feeds/packages/lang/golang
 git clone https://github.com/sbwml/packages_lang_golang -b 24.x feeds/packages/lang/golang
-
-# 10-删除软件包(防止插件冲突，删除重复)
-rm -rf feeds/luci/applications/luci-app-mosdns
-rm -rf feeds/luci/applications/luci-app-passwall
-rm -rf feeds/luci/applications/luci-app-passwall2
-rm -rf feeds/luci/applications/luci-app-ssr-plus
-rm -rf feeds/luci/applications/luci-app-vssr
-rm -rf feeds/luci/applications/luci-app-ddns-go
-rm -rf feeds/luci/applications/luci-app-appfilter
-rm -rf feeds/luci/applications/luci-app-openclash
-rm -rf feeds/luci/applications/luci-app-lucky
-rm -rf feeds/luci/applications/luci-app-smartdns
-rm -rf feeds/luci/applications/luci-app-dae
-rm -rf feeds/luci/applications/luci-app-daed
-rm -rf feeds/luci/applications/luci-app-v2raya
-rm -rf feeds/luci/applications/luci-app-v2ray-server
 
 # 10-更新feeds 
 ./scripts/feeds update -a && ./scripts/feeds install -a
