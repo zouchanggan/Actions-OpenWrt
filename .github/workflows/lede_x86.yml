@@ -1,4 +1,4 @@
-name: lede_x86
+name: X86_64 OpenWrt
 
 on: 
   workflow_dispatch:
@@ -11,14 +11,15 @@ on:
     - cron: 0 03 * * 3,6
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  FEEDS_CONF: Openwrt/feeds.conf.default
-  CONFIG_FILE: Openwrt/x86/.config
-  DIY_P1_SH: Openwrt/diy-part1.sh
-  DIY_P2_SH: Openwrt/diy-part2.sh
-  UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE: true
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-24.10
+  CONFIG_FILE: configs/x86_64.config
+  DIY_SCRIPT: diy/diy-script.sh
+  CLASH_KERNEL: amd64
+  CACHE_TOOLCHAIN: true
+  UPLOAD_BIN_DIR: false
+  FIRMWARE_RELEASE: true
+  FIRMWARE_TAG: X86_64
   TZ: Asia/Shanghai
 
 jobs:
