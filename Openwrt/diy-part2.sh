@@ -46,7 +46,9 @@ git clone https://github.com/WukongMaster/luci-theme-opentomcat.git package/luci
 # echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
 
 # 7-添加外部软件源
-git clone -b lede https://github.com/zouchanggan/openwrt-packages ./package/small
+# git clone -b lede https://github.com/zouchanggan/openwrt-packages ./package/small
+git clone https://git.kejizero.online/zhao/openwrt_helloworld.git package/helloworld -b v5
+git clone https://github.com/oppen321/openwrt-package package/openwrt-package
 
 # 8-删除依赖(防止插件冲突，删除重复)
 rm -rf feeds/packages/net/{lucky,alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
