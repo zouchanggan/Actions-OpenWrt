@@ -1,7 +1,7 @@
 # 借助 GitHub Actions 的 OpenWrt 在线自动编译.
 
 ### 固件发布:
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/moruiris/Actions-OpenWrt?style=for-the-badge&label=固件下载)](https://github.com/zouchanggan/Actions-OpenWrt/releases/latest)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/zouchanggan/Actions-OpenWrt?style=for-the-badge&label=固件下载)](https://github.com/zouchanggan/Actions-OpenWrt/releases/latest)
 
 #### 固件源码来源
 - 官方-[openwrt/openwrt](https://github.com/openwrt/openwrt).
