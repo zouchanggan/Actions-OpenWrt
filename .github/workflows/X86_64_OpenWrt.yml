@@ -110,7 +110,7 @@ jobs:
         chmod +x $GITHUB_WORKSPACE/Openwrt/scripts/*.sh
         chmod +x $DIY_SCRIPT
         cd $OPENWRT_PATH
-        $GITHUB_WORKSPACE/Openwrt/$DIY_SCRIPT
+        $GITHUB_WORKSPACE/$DIY_SCRIPT
         $GITHUB_WORKSPACE/Openwrt/scripts/zero.sh
         $GITHUB_WORKSPACE/Openwrt/scripts/preset-clash-core.sh $CLASH_KERNEL
         $GITHUB_WORKSPACE/Openwrt/scripts/preset-adguard-core.sh $CLASH_KERNEL
