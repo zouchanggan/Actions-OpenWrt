@@ -7,8 +7,8 @@ on:
         description: 'Set LAN IP Address'
         required: true
         default: '192.168.1.1'
-  schedule:
-  #  - cron: 0 03 * * 3,6
+#  schedule:
+#    - cron: 0 03 * * 3,6
 
 env:
   REPO_URL: https://github.com/openwrt/openwrt
