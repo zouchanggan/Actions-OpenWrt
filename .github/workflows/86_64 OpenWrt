@@ -1,4 +1,4 @@
-name: X86_64_OpenWrt_test
+name: X86_64_test
 
 on: 
   workflow_dispatch:
