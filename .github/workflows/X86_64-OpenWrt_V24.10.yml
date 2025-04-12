@@ -142,7 +142,7 @@ jobs:
       run: |
         cd $OPENWRT_PATH/bin/targets/*/*
         cat sha256sums
-        # cp $OPENWRT_PATH/.config build.config
+        cp $OPENWRT_PATH/.config build.config
         mv -f $OPENWRT_PATH/bin/packages/*/*/*.ipk packages
         tar -zcf Packages.tar.gz packages
         find -name "*.manifest*" | xargs -i mv -f {} packages
