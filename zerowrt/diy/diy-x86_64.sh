@@ -57,7 +57,7 @@ curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/bra
 curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
 
 # default LAN IP
-sed -i "s/192.168.1.1/10.0.0.1/g" package/base-files/files/bin/config_generate
+sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 
 # 修改名称
 sed -i 's/OpenWrt/ZeroWrt/' package/base-files/files/bin/config_generate
@@ -144,6 +144,11 @@ git clone --depth=1 -b helloworld https://github.com/oppen321/openwrt-package pa
 
 # 加载软件源
 git clone --depth=1 https://github.com/oppen321/openwrt-package package/openwrt-package
+rm -rf package/openwrt-package/luci-app-lucky
+
+# 加载软件源
+git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
+rm -rf package/lucky/previews
 
 # banner
 cp -f package/openwrt-package/banner  package/base-files/files/etc/banner
