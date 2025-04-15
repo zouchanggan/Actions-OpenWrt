@@ -164,7 +164,6 @@ jobs:
         path: ${{ env.FIRMWARE_PATH }}
 
     - name: Upload Firmware To Release
-      if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
       if: steps.tag.outputs.status == 'success' && !cancelled()
       uses: ncipollo/release-action@v1
       with:
