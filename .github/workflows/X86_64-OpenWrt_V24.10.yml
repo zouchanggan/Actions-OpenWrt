@@ -165,11 +165,13 @@ jobs:
 
     - name: Upload Firmware To Release
       if: steps.compile.outputs.status == 'success' && env.FIRMWARE_RELEASE == 'true'
+      if: steps.tag.outputs.status == 'success' && !cancelled()
       uses: ncipollo/release-action@v1
       with:
         name: ${{ env.FILE_DATE }}-OpenWrt-X86_64-24.10
         allowUpdates: true
-        tag: OpenWrt-X86_64-24.10
+        # tag: OpenWrt-X86_64-24.10
+        tag_name: ${{ steps.tag.outputs.release_tag }}
         token: ${{ secrets.GITHUB_TOKEN }}
         artifacts: ${{ env.FIRMWARE_PATH }}/*
         body: |
