@@ -60,7 +60,7 @@ curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/ma
 sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 
 # 修改名称
-sed -i 's/OpenWrt/OpenWrt/' package/base-files/files/bin/config_generate
+sed -i 's/OpenWrt/LEDE/' package/base-files/files/bin/config_generate
 
 # default-settings
 git clone --depth=1 -b openwrt-24.10 https://github.com/oppen321/default-settings package/default-settings
