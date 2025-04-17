@@ -120,7 +120,7 @@ jobs:
         $GITHUB_WORKSPACE/zerowrt/scripts/preset-clash-core.sh $CLASH_KERNEL
         $GITHUB_WORKSPACE/zerowrt/scripts/preset-adguard-core.sh $CLASH_KERNEL
 
-    - name: Set up Lan IP
+    - name: Set default LAN IP
       run: |
         cd $OPENWRT_PATH
         SET_IP=${{ github.event.inputs.LAN_IP }}
