@@ -7,6 +7,7 @@ on:
         description: 'Set LAN IP Address'
         required: true
         default: '192.168.1.1'
+# 定时触发编译
 #  schedule:
 #    - cron: 0 03 * * 3,6
 
