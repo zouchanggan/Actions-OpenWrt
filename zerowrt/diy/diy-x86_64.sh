@@ -52,15 +52,15 @@ sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/smb.conf.te
 # bash
 sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
 sed -i '\#export ENV=/etc/shinit#a export HISTCONTROL=ignoredups' package/base-files/files/etc/profile
-mkdir -p files/root
-curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
-curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
+# mkdir -p files/root
+# curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
+# curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
 
 # default LAN IP
 sed -i "s/192.168.1.1/192.168.1.10/g" package/base-files/files/bin/config_generate
 
 # 修改名称
-sed -i 's/OpenWrt/LEDE/' package/base-files/files/bin/config_generate
+# sed -i 's/OpenWrt/LEDE/' package/base-files/files/bin/config_generate
 
 # default-settings
 git clone --depth=1 -b openwrt-24.10 https://github.com/oppen321/default-settings package/default-settings
@@ -194,8 +194,8 @@ curl -L https://git.kejizero.online/zhao/files/raw/branch/main/images/bg1.jpg -o
 sed -i "s|_('Firmware Version'), (L.isObject(boardinfo.release) ? boardinfo.release.description + ' / ' : '') + (luciversion || '')|_('Firmware Version'), 'ZeroWrt-VIP-R25.04.6-K6.6.83'|" feeds/luci/modules/luci-mod-status/htdocs/luci-static/resources/view/status/include/10_system.js
 
 # istoreos
-sed -i 's/iStoreOS/ZeroWrt/' package/openwrt-package/istoreos-files/files/etc/board.d/10_system
-sed -i 's/192.168.100.1/192.168.1.10/' package/openwrt-package/istoreos-files/Makefile
+# sed -i 's/iStoreOS/ZeroWrt/' package/openwrt-package/istoreos-files/files/etc/board.d/10_system
+# sed -i 's/192.168.100.1/192.168.1.10/' package/openwrt-package/istoreos-files/Makefile
 
 # update feeds
 ./scripts/feeds update -a
