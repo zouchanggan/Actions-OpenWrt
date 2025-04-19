@@ -151,7 +151,7 @@ git clone --depth=1 https://github.com/gdy666/luci-app-lucky package/lucky
 rm -rf package/lucky/previews
 
 # banner
-cp -f package/openwrt-package/banner  package/base-files/files/etc/banner
+# cp -f package/openwrt-package/banner  package/base-files/files/etc/banner
 
 # Docker
 rm -rf feeds/luci/applications/luci-app-dockerman
