@@ -86,6 +86,12 @@ cp -rf OpenWrt-Patch/bbr3/* ./target/linux/generic/backport-6.6/
 # bcmfullcone
 cp -rf OpenWrt-Patch/bcmfullcone/* ./target/linux/generic/hack-6.6/
 
+### 替换FW4 ###
+git clone -b main https://github.com/openwrt/openwrt.git package/openwrt_main
+rm -rf ./package/network/config/firewall4
+cp -rf ./package/openwrt_main/package/network/config/firewall4 ./package/network/config/firewall4
+rm -rf ./package/openwrt_main
+
 # FW4
 mkdir -p package/network/config/firewall4/patches
 cp -f OpenWrt-Patch/firewall/firewall4_patches/*.patch package/network/config/firewall4/patches/
