@@ -52,19 +52,19 @@ jobs:
         cp -r ./Openwrt/SCRIPTS/. ./
         /bin/bash 01_get_ready.sh
         
+    - name: QTMDFW4
+      working-directory: ${{ github.workspace }}/openwrt
+      run: |
+        cp -rf ../Openwrt/SCRIPTS/X86/config.seed .config
+        
     - name: Prepare Package
       working-directory: ${{ github.workspace }}/openwrt
       run: |
         cp -r ../Openwrt/SCRIPTS/. ./
-        /bin/bash /Openwrt/02_prepare_package.sh
-        /bin/bash /Openwrt/03_custom_settings_x86.sh
+        /bin/bash 02_prepare_package.sh
+        /bin/bash 03_custom_settings_x86.sh
 #        /bin/bash 04_remove_upx.sh
-        
-    - name: QTMDFW4
-      working-directory: ${{ github.workspace }}/openwrt
-      run: |
-        cp -rf ../SCRIPTS/X86/config.seed .config
-        
+                
 #    - name: Convert Translation
 #      working-directory: ${{ github.workspace }}/openwrt
 #      run: |
