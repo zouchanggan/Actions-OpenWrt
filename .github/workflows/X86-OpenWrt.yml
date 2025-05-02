@@ -48,16 +48,16 @@ jobs:
     - name: Prepare Mixedwrt
       run: |
         sudo chown -R runner:runner /home/runner/work/Actions-OpenWrt
-        cp -r ./SCRIPTS/X86/. ./SCRIPTS/
-        cp -r ./SCRIPTS/. ./
+        cp -r ./Openwrt/SCRIPTS/X86/. ./SCRIPTS/
+        cp -r ./Openwrt/SCRIPTS/. ./
         /bin/bash 01_get_ready.sh
         
     - name: Prepare Package
       working-directory: ${{ github.workspace }}/openwrt
       run: |
-        cp -r ../SCRIPTS/. ./
-        /bin/bash 02_prepare_package.sh
-        /bin/bash 03_custom_settings_x86.sh
+        cp -r ../Openwrt/SCRIPTS/. ./
+        /bin/bash /Openwrt/02_prepare_package.sh
+        /bin/bash /Openwrt/03_custom_settings_x86.sh
 #        /bin/bash 04_remove_upx.sh
         
     - name: QTMDFW4
