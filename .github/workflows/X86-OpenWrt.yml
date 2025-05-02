@@ -55,7 +55,6 @@ jobs:
     - name: Prepare Package
       working-directory: ${{ github.workspace }}/openwrt
       run: |
-        cp -r ../Openwrt/SCRIPTS/. ./
         /bin/bash 02_prepare_package.sh
         /bin/bash 03_custom_settings_x86.sh
 #        /bin/bash 04_remove_upx.sh
