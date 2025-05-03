@@ -46,9 +46,9 @@ sed -i 's#20) \* 1000#60) \* 1000#g' feeds/luci/modules/luci-base/htdocs/luci-st
 # 切换bash
 sed -i 's#ash#bash#g' package/base-files/files/etc/passwd
 sed -i '\#export ENV=/etc/shinit#a export HISTCONTROL=ignoredups' package/base-files/files/etc/profile
-mkdir -p files/root
-curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
-curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
+# mkdir -p files/root
+# curl -so files/root/.bash_profile https://git.kejizero.online/zhao/files/raw/branch/main/root/.bash_profile
+# curl -so files/root/.bashrc https://git.kejizero.online/zhao/files/raw/branch/main/root/.bashrc
 
 # 更换为 ImmortalWrt Uboot 以及 Target
 rm -rf target/linux/rockchip
@@ -267,9 +267,9 @@ sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/samba.confi
 sed -i 's/0666/0644/g;s/0777/0755/g' feeds/packages/net/samba4/files/smb.conf.template
 
 # rootfs files
-cp -rf ../OpenWrt-Patch/files/* ./files/
-chmod +x files/bin/ZeroWrt
-chmod +x files/root/version.txt
+# cp -rf ../OpenWrt-Patch/files/* ./files/
+# chmod +x files/bin/ZeroWrt
+# chmod +x files/root/version.txt
 
 # Realtek_Driver
 cp -rf ../Realtek_Driver/package_kernel_r8101 ./package/kernel/r8101
