@@ -50,7 +50,7 @@ jobs:
       
     - name: Prepare Mixedwrt
       run: |
-        sudo chown -R runner:runner /home/runner/work/OpenWrt-Action
+        sudo chown -R runner:runner /home/runner/work/ZeroWrt-Action
         cp -r ./SCRIPTS/X86/. ./SCRIPTS/
         cp -r ./SCRIPTS/. ./
         /bin/bash 01_get_ready.sh
@@ -160,6 +160,10 @@ jobs:
         rm -rf ./artifact/
         mkdir -p ./artifact/
         mv openwrt/bin/targets/x86/64/*combined-efi.img* ./artifact/
+        mv openwrt/bin/targets/x86/64/*combined-efi.vmdk* ./artifact/
+        mv openwrt/bin/targets/x86/64/*rootfs.img* ./artifact/
+        echo "KERNEL=$(cat *.manifest | grep ^kernel | cut -d- -f2 | tr -d ' ')" >> $GITHUB_ENV
+        echo "FIRMWARE_PATH=$PWD" >> $GITHUB_ENV
         
     - name: Create release
       id: create_release
@@ -172,7 +176,7 @@ jobs:
         commit: "24.10"
         replacesArtifacts: true
         token: ${{ secrets.GITHUB_TOKEN }}
-        artifacts: ${{ env.FIRMWARE_PATH }}/*
+        artifacts: ./artifact/*
         body: |
           **This is OpenWrt Firmware for X86_64**
           ### 📒 固件信息
