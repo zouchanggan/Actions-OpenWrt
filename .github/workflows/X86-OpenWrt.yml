@@ -158,8 +158,9 @@ jobs:
     - name: Organize files
       id: organize
       run: |
-        rm -rf ./artifact/
-        mkdir -p ./artifact/
+        cd openwrt/bin/targets/*/*
+        cat sha256sums
+        rm -rf ./artifact/ && mkdir -p ./artifact/
         mv openwrt/bin/targets/x86/64/*combined-efi.img* ./artifact/
         mv openwrt/bin/targets/x86/64/*combined-efi.vmdk* ./artifact/
         mv openwrt/bin/targets/x86/64/*rootfs.img* ./artifact/
